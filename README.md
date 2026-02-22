@@ -29,14 +29,21 @@ PLATAFORMA_CED/
 ```
 
 ### 🎨 Moodle Theme Architecture (theme_ced)
+
 El tema personalizado de Moodle (`theme_ced`) fue construido siguiendo el modelo **MVC (Model-View-Controller)** moderno exigido por Moodle para asegurar mantenibilidad a nivel empresarial:
-- **Vista Principal (`login_view.mustache`)**: Este archivo es el **corazón del diseño visual**. Toda la estructura HTML (el modal flotante superpuesto, el fondo de pantalla completa, botones personalizados y re-estructuración visual de Moodle) reside aquí como plantillas Mustache en estado puro.
-- **Controlador (`layout/login/login.php`)**: Funciona unicamente como puente. Recibe las instrucciones nativas de Moodle e inyecta la plantilla `login_view.mustache` a través del motor `render_from_template`.
-- **CSS Avanzado (`style/login/login.css`)**: Estilizado mediante **Flexbox**, ordena inyección dinámica de módulos (Guest Login, Forgot Password, Lang Menu) sin utilizar "hacks", manipulando la jerarquía nativa de componentes de Moodle y aplicando diseño *Glassmorphism* (Modal).
+
+- **Archivos Obligatorios Raíz**: `config.php`, `lib.php`, y `version.php` **deben** permanecer forzosamente en la raíz de la carpeta `theme_ced/`. Esta es una regla arquitectónica inquebrantable de Moodle; si se mueven a una subcarpeta, Moodle dejará de detectar el tema inmediatamente.
+- **Doble `config.php` (Explicación)**:
+  - `PLATAFORMA_CED/moodle_platform/config.php`: Es el archivo de configuración **Global** de toda tu plataforma Moodle (Base de datos, dominios, contraseñas de red).
+  - `PLATAFORMA_CED/moodle_platform/theme_ced/config.php`: Es exclusivo del tema visual. Sólo le indica a Moodle qué hojas de CSS y layouts específicos de nuestro tema debe cargar.
+- **Vista Principal (`login_view.mustache`)**: Este archivo es el **corazón del diseño visual** del login. Toda la estructura HTML reside aquí como plantillas.
+- **Controlador (`layout/login/login.php`)**: Funciona unicamente como puente. Recibe las instrucciones nativas de Moodle e inyecta la plantilla `login_view.mustache`.
+- **CSS Avanzado & Dark Mode (`style/login.css`)**: Estilizado mediante **Flexbox**, ordena inyección dinámica de los módulos nativos de Moodle (Cookies, Guest Login, Forgot Password, Lang Menu) para que se alineen a la perfección con la interfaz "Glassmorphism" del Modal. Además cuenta con media queries `@media (prefers-color-scheme: dark)` integradas.
 
 ## 🚀 Getting Started
 
 ### Prerequisites
+
 - Node.js (v18 or higher)
 - Docker & Docker Compose
 
@@ -47,12 +54,14 @@ El tema personalizado de Moodle (`theme_ced`) fue construido siguiendo el modelo
 
 2. **Database & Platforms (Docker)**:
    Run the full Moodle, DB, and Backend ecosystem:
+
    ```bash
    docker-compose up -d --build
    ```
 
 3. **Moodle (PHP) Theme Cache**:
    If changes are made to the `moodle_platform/theme_ced` structure, enter the container to clear cache:
+
    ```bash
    docker exec plataforma_ced-moodle-1 php /var/www/html/admin/cli/purge_caches.php
    ```
@@ -65,7 +74,8 @@ El tema personalizado de Moodle (`theme_ced`) fue construido siguiendo el modelo
    ```
 
 ## 🛠 Architecture Decisions
-- **Segregation of Concerns**: PHP remains strictly in `/moodle_platform` while TypeScript lives in `/frontend` and `/backend`. 
+
+- **Segregation of Concerns**: PHP remains strictly in `/moodle_platform` while TypeScript lives in `/frontend` and `/backend`.
 - **Modular Styles & Layouts**: Moodle's theme uses MVC concepts, separating UI logic (`layout/*.php`), presentation structure (`templates/*.mustache`), and design (`style/*.css`).
 - **Data Protection**: Sensitive files and auto-generated data (`moodledata`, DB volumes) are explicitly ignored via `.gitignore`.
 - **Frontend**: Next.js 14, Tailwind CSS, Lucide Icons, Framer Motion.
@@ -74,4 +84,5 @@ El tema personalizado de Moodle (`theme_ced`) fue construido siguiendo el modelo
 - **Config**: Pre-configured environment variables and TypeScript settings.
 
 ---
+
 Created with 💙 for the CED Educational Platform.

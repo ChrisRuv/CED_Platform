@@ -2,7 +2,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $THEME->name = 'ced';
-$THEME->sheets = ['login/login', 'standard/general'];
+$THEME->sheets = ['login', 'general'];
 $THEME->editor_sheets = [];
 $THEME->parents = ['boost'];
 $THEME->enable_dock = false;
