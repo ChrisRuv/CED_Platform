@@ -23,6 +23,9 @@ PLATAFORMA_CED/
 │   │   ├── pix/        # Core Moodle assets (Icons, Hero background)
 │   │   └── config.php  # Theme registration
 │   └── config.php      # Main Moodle instance configuration
+├── docs/               # Technical Documentation and Snapshots
+│   └── debug/
+│       └── debug_login_snapshot.html # HTML snapshot for analyzing Moodle's native login DOM structure
 ├── .gitignore          # Excludes DB data, Node modules, and .env files
 ├── .env                # Global environment variables
 └── docker-compose.yml  # Infrastructure Orchestration

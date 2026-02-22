@@ -1,4 +1,4 @@
-body#ced-login-page {
+body#page-login-index {
     background: #0f172a url('[[pix:theme|ced-hero]]') no-repeat center center fixed !important;
     background-size: cover !important;
     margin: 0 !important;
@@ -16,12 +16,12 @@ body#ced-login-page {
 }
 
 /* HIDE MOODLE NATIVE ELEMENTS COMPLETELY */
-#ced-login-page .login-instructions,
-#ced-login-page .login-forgotpassword,
-#ced-login-page .login-form-forgotpassword,
-#ced-login-page .login-languagemenu,
-#ced-login-page .login-identityproviders,
-#ced-login-page .login-divider {
+#page-login-index .login-instructions,
+#page-login-index .login-forgotpassword,
+#page-login-index .login-form-forgotpassword,
+#page-login-index .login-languagemenu,
+#page-login-index .login-identityproviders,
+#page-login-index .login-divider {
     display: none !important;
 }
 
@@ -90,12 +90,14 @@ body#ced-login-page {
     width: 100%;
     max-width: 440px;
     border-radius: 24px;
-    padding: 3.5rem 3rem;
+    padding: 2rem;
     position: relative;
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     transform: translateY(20px) scale(0.95);
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     box-sizing: border-box;
+    max-height: 98vh;
+    overflow-y: auto;
 }
 
 .modal-overlay.active .modal-container {
@@ -122,7 +124,7 @@ body#ced-login-page {
 /* LOGO */
 .modal-logo {
     text-align: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .ced-logo-text {
@@ -156,7 +158,7 @@ body#ced-login-page {
     width: 100%;
 }
 
-#ced-login-page .login-container {
+#page-login-index .login-container {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
@@ -166,32 +168,32 @@ body#ced-login-page {
     box-shadow: none !important;
 }
 
-#ced-login-page .card {
+#page-login-index .card {
     border: none !important;
     background: transparent !important;
 }
 
-#ced-login-page .card-body {
+#page-login-index .card-body {
     padding: 0 !important;
 }
 
-#ced-login-page .card-title {
+#page-login-index .card-title {
     display: none !important;
 }
 
 /* FIXING CURRENT FORM ALIGNMENTS */
-#ced-login-page .login-form {
+#page-login-index .login-form {
     display: flex;
     flex-direction: column;
 }
 
-#ced-login-page .login-form .form-group {
-    margin-bottom: 1.5rem !important;
+#page-login-index .login-form .form-group {
+    margin-bottom: 1rem !important;
     position: relative;
     width: 100%;
 }
 
-#ced-login-page .login-form label {
+#page-login-index .login-form label {
     display: flex !important;
     font-size: 0.85rem !important;
     font-weight: 700 !important;
@@ -200,48 +202,48 @@ body#ced-login-page {
     text-transform: uppercase;
 }
 
-#ced-login-page .form-control {
+#page-login-index .form-control {
     width: 100% !important;
     box-sizing: border-box !important;
     border-radius: 14px !important;
-    padding: 16px 16px 16px 44px !important;
+    padding: 12px 12px 12px 40px !important;
     border: 1px solid #cbd5e1 !important;
     background: #f8fafc !important;
     color: #0f172a !important;
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
     transition: all 0.2s;
     outline: none !important;
 }
 
-#ced-login-page .form-control:focus {
+#page-login-index .form-control:focus {
     border-color: #2563eb !important;
     box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1) !important;
     background: #ffffff !important;
 }
 
 /* Pseudo-icons inside inputs */
-#ced-login-page .login-form .form-group:nth-of-type(1)::before {
+#page-login-index .login-form .form-group:nth-of-type(1)::before {
     content: '👤';
     position: absolute;
     left: 14px;
-    top: 40px;
+    top: 35px;
     z-index: 10;
     opacity: 0.4;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
-#ced-login-page .login-form .form-group:nth-of-type(2)::before {
+#page-login-index .login-form .form-group:nth-of-type(2)::before {
     content: '🔒';
     position: absolute;
     left: 14px;
-    top: 40px;
+    top: 35px;
     z-index: 10;
     opacity: 0.4;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 /* Submit Button */
-#ced-login-page .btn-primary {
+#page-login-index .btn-primary {
     width: 100% !important;
     background: #2563eb !important;
     border: none !important;
@@ -256,28 +258,28 @@ body#ced-login-page {
     box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
 }
 
-#ced-login-page .btn-primary:hover {
+#page-login-index .btn-primary:hover {
     background: #1d4ed8 !important;
 }
 
 /* OVERRIDING NATIVE MOODLE FORMS FOR PERFECT SYMMETRY */
-#ced-login-page .loginform {
+#page-login-index .loginform {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
 /* Hide unnecessary Moodle native links */
-#ced-login-page .login-instructions,
-#ced-login-page .login-forgotpassword,
-#ced-login-page .login-identityproviders,
-#ced-login-page .login-divider,
-#ced-login-page .divider.border-left {
+#page-login-index .login-instructions,
+#page-login-index .login-forgotpassword,
+#page-login-index .login-identityproviders,
+#page-login-index .login-divider,
+#page-login-index .divider.border-left {
     display: none !important;
 }
 
 /* 1. Login button */
-#ced-login-page #loginbtn {
+#page-login-index #loginbtn {
     width: 100% !important;
     background: #2563eb !important;
     border: none !important;
@@ -286,25 +288,25 @@ body#ced-login-page {
     border-radius: 14px !important;
     font-weight: 800 !important;
     font-size: 1rem !important;
-    margin-top: 1rem !important;
+    margin-top: 0.5rem !important;
     cursor: pointer !important;
     transition: background 0.2s !important;
     box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
 }
 
-#ced-login-page #loginbtn:hover {
+#page-login-index #loginbtn:hover {
     background: #1d4ed8 !important;
 }
 
 /* 2. Forgot Password Text */
-#ced-login-page .login-form-forgotpassword {
+#page-login-index .login-form-forgotpassword {
     text-align: right;
     margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     order: 3;
 }
 
-#ced-login-page .login-form-forgotpassword a {
+#page-login-index .login-form-forgotpassword a {
     font-size: 0.85rem;
     color: #2563eb;
     font-weight: 600;
@@ -312,26 +314,26 @@ body#ced-login-page {
 }
 
 /* 3. Guest Access Header */
-#ced-login-page h2.login-heading {
+#page-login-index h2.login-heading {
     order: 4;
     text-align: center;
     font-size: 0.95rem;
     color: #334155;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     margin-bottom: 0.75rem;
     font-weight: 600;
     border-top: 1px solid #f1f5f9;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
 }
 
 /* 4. Guest Access Button */
-#ced-login-page #guestlogin {
+#page-login-index #guestlogin {
     order: 5;
     width: 100%;
 }
 
-#ced-login-page #loginguestbtn,
-#ced-login-page .d-flex button[data-modal="alert"] {
+#page-login-index #loginguestbtn,
+#page-login-index .d-flex button[data-modal="alert"] {
     background: #f8fafc !important;
     border: 1px solid #cbd5e1 !important;
     color: #334155 !important;
@@ -343,47 +345,60 @@ body#ced-login-page {
     width: 100% !important;
     transition: background 0.2s;
     text-align: center;
+    box-sizing: border-box !important;
 }
 
-#ced-login-page #loginguestbtn:hover,
-#ced-login-page .d-flex button[data-modal="alert"]:hover {
+#page-login-index #loginguestbtn:hover,
+#page-login-index .d-flex button[data-modal="alert"]:hover {
     background: #f1f5f9 !important;
 }
 
-/* 5. Flex container holding Cookies & Lang */
-#ced-login-page .d-flex {
+/* 5. Override Container holding Cookies & Lang (Break Moodle Native Flex) */
+#page-login-index .loginform > div.d-flex {
     order: 6;
+    display: block !important; /* Force block to break Moodle's Flex Row */
+    width: 100% !important;
+    margin-top: 0.75rem !important;
+}
+
+/* 5.A Force Language Box to Top */
+#page-login-index .loginform > div.d-flex > .login-languagemenu {
+    margin: 0 0 0.75rem 0 !important;
+    width: 100% !important;
     display: flex !important;
-    flex-direction: column-reverse !important; /* Forces Lang on bottom, Cookies on top */
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
-    width: 100%;
+    justify-content: center !important;
 }
 
-/* 6. Language Menu */
-#ced-login-page .login-languagemenu {
-    margin-top: 0.5rem;
-}
-
-#ced-login-page .login-languagemenu a.dropdown-toggle {
+/* 5.B Force Language Dropdown Pill Match */
+#page-login-index .loginform div.login-languagemenu a.dropdown-toggle {
     text-align: center;
     font-size: 0.85rem;
     color: #475569;
     background: #f8fafc;
     border: 1px solid #cbd5e1;
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 12px 20px;
+    border-radius: 12px;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+}
+
+/* 5.C Force Cookies Button below Lang Menu */
+#page-login-index .loginform > div.d-flex > button[data-modal="alert"] {
+    width: 100% !important;
+    margin: 0 !important;
+    display: block !important;
+    box-sizing: border-box !important;
 }
 
 /* FOOTER */
 .login-footer {
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
     text-align: center;
     border-top: 1px solid #f1f5f9;
-    padding-top: 1.5rem;
+    padding-top: 1rem;
 }
 
 .login-footer p {
@@ -423,42 +438,42 @@ body#ced-login-page {
     .ced-logo-text { color: #f8fafc; }
     .platform-subtitle { color: #94a3b8; }
     
-    #ced-login-page .login-form label,
-    #ced-login-page h2.login-heading,
+    #page-login-index .login-form label,
+    #page-login-index h2.login-heading,
     .welearning-logo {
         color: #f1f5f9 !important;
     }
 
-    #ced-login-page .form-control {
+    #page-login-index .form-control {
         background: #0f172a !important;
         border: 1px solid #334155 !important;
         color: #f8fafc !important;
     }
 
-    #ced-login-page .form-control:focus {
+    #page-login-index .form-control:focus {
         background: #1e293b !important;
         border-color: #3b82f6 !important;
     }
 
     /* Secondary Buttons (Guest, Cookies, Lang) */
-    #ced-login-page #loginguestbtn,
-    #ced-login-page .d-flex button[data-modal="alert"],
-    #ced-login-page .login-languagemenu a.dropdown-toggle {
+    #page-login-index #loginguestbtn,
+    #page-login-index .d-flex button[data-modal="alert"],
+    #page-login-index .login-languagemenu a.dropdown-toggle {
         background: #0f172a !important;
         border: 1px solid #334155 !important;
         color: #f1f5f9 !important;
     }
 
-    #ced-login-page #loginguestbtn:hover,
-    #ced-login-page .d-flex button[data-modal="alert"]:hover,
-    #ced-login-page .login-languagemenu a.dropdown-toggle:hover {
+    #page-login-index #loginguestbtn:hover,
+    #page-login-index .d-flex button[data-modal="alert"]:hover,
+    #page-login-index .login-languagemenu a.dropdown-toggle:hover {
         background: #334155 !important;
     }
 
     /* Borders & dividers */
-    #ced-login-page h2.login-heading,
+    #page-login-index h2.login-heading,
     .login-footer,
-    #ced-login-page .login-languagemenu a.dropdown-toggle {
+    #page-login-index .login-languagemenu a.dropdown-toggle {
         border-top: 1px solid #334155 !important;
     }
 
@@ -467,7 +482,7 @@ body#ced-login-page {
     }
 
     .custom-forgot-link,
-    #ced-login-page .login-form-forgotpassword a,
+    #page-login-index .login-form-forgotpassword a,
     .login-footer a {
         color: #3b82f6 !important;
     }
