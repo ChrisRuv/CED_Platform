@@ -1,0 +1,52 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Docker
+.docker/
+docker-volume/
+moodle_data/
+mariadb_data/
+
+# Environment Variables
+.env
+.env.test
+.env.production
+.env.local
+
+# Dependency directories
+node_modules/
+jspm_packages/
+vendor/
+
+# Moodle Specific
+moodle_platform/config.php
+moodle_data/
+
+# Build and Temp files
+dist/
+build/
+.next/
+out/
+coverage/
+.nyc_output/
+.parcel-cache/
+.DS_Store
+
+# IDE and Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+.project
+.settings
+
+# Typescript
+*.tsbuildinfo
+
+# Misc
+npm-crash.log

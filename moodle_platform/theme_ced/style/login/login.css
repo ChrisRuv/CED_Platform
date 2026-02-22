@@ -1,0 +1,238 @@
+/* ORANGE THEME LOGIN STYLES */
+
+body#ced-login-page {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+    font-family: 'Roboto', 'Inter', sans-serif !important;
+}
+
+.split-viewport {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* LEFT PANEL */
+.orange-panel {
+    flex: 0 0 71%;
+    background-image: url('[[pix:theme_ced|ced-hero]]');
+    background-size: cover;
+    background-position: center;
+}
+
+/* RIGHT PANEL */
+.login-panel {
+    flex: 0 0 29%;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    overflow-y: auto;
+}
+
+.login-container-inner {
+    width: 100%;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* LOGO STYLING */
+.login-logo {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.ced-logo-text {
+    font-size: 3rem;
+    font-weight: 800;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.ced-c {
+    color: #e67e22;
+    /* Orange color for the 'C' */
+    font-size: 3.5rem;
+}
+
+.platform-subtitle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: #7f8c8d;
+    margin-top: 0.25rem;
+}
+
+.login-header {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 2rem;
+}
+
+/* MOODLE FORM OVERRIDES */
+#ced-login-page .login-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+#ced-login-page .card {
+    background: transparent !important;
+    border: none !important;
+}
+
+#ced-login-page .card-body {
+    padding: 0 !important;
+}
+
+#ced-login-page .card-title {
+    display: none !important;
+}
+
+#ced-login-page .form-control {
+    background: #f9f9f9 !important;
+    border: 1px solid #ddd !important;
+    border-radius: 4px !important;
+    padding: 12px 12px 12px 40px !important;
+    /* Space for icons */
+    height: auto !important;
+    font-size: 0.9rem !important;
+    color: #333 !important;
+}
+
+/* User Icon Placeholder */
+.login-form .form-group:first-of-type::before {
+    content: '👤';
+    position: absolute;
+    left: 14px;
+    top: 42px;
+    z-index: 10;
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+/* Lock Icon Placeholder */
+.login-form .form-group:nth-of-type(2)::before {
+    content: '🔒';
+    position: absolute;
+    left: 14px;
+    top: 42px;
+    z-index: 10;
+    font-size: 14px;
+    opacity: 0.5;
+}
+
+.login-form .form-group {
+    position: relative;
+}
+
+#ced-login-page .login-form label {
+    display: flex !important;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+    color: #666 !important;
+    margin-bottom: 0.3rem !important;
+}
+
+/* Styled 'Forgot Password' link positioning */
+.login-form .form-group:nth-of-type(2) label::after {
+    content: 'Olvidé mi contraseña';
+    font-size: 10px;
+    color: #e67e22;
+    font-weight: 600;
+}
+
+#ced-login-page .form-control:focus {
+    border-color: #e67e22 !important;
+    box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.1) !important;
+}
+
+#ced-login-page .btn-primary {
+    background: #ddd !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    padding: 12px !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+    margin-top: 1rem !important;
+    cursor: not-allowed;
+    text-transform: none !important;
+}
+
+/* When fields are filled, we could use JS to change this, but for CSS we can't easily. 
+   Usually Moodle buttons stay grey until valid or active */
+
+#ced-login-page .login-instructions {
+    display: none !important;
+}
+
+/* FOOTER */
+.login-footer {
+    margin-top: 3rem;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #999;
+    line-height: 1.4;
+}
+
+.login-footer a {
+    color: #e67e22;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.welearning-logo {
+    margin-top: 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #444;
+}
+
+.we-text {
+    color: #7f8c8d;
+}
+
+/* HELP BUTTON */
+.help-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #777;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 1024px) {
+    .orange-panel {
+        display: none;
+    }
+
+    .login-panel {
+        flex: 0 0 100%;
+    }
+}

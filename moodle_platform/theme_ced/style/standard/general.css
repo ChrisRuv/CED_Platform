@@ -1,0 +1,53 @@
+/* GENERAL STYLES FOR STANDARD PAGES */
+
+body {
+    background-color: #f8fafc;
+    font-family: 'Inter', sans-serif;
+}
+
+#page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#page-content {
+    flex: 1 0 auto;
+    padding: 2rem;
+}
+
+/* Example styling for the main container */
+#region-main-box {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 2rem;
+}
+
+/* Typography for general pages */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #1e293b;
+    font-weight: 700;
+}
+
+/* Base button styles */
+.btn {
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    border-color: #2563eb;
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
+}

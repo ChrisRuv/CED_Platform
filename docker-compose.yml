@@ -1,0 +1,48 @@
+services:
+  mariadb:
+    image: mariadb:10.11
+    environment:
+      - MARIADB_USER=elite_db_user
+      - MARIADB_PASSWORD=elite_db_password
+      - MARIADB_DATABASE=colegio_elite_db
+      - MARIADB_ROOT_PASSWORD=elite_root_password
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - campus_network
+    command: [ '--innodb_buffer_pool_size=1G' ]
+    restart: always
+
+  moodle:
+    build: ./moodle_platform
+    ports:
+      - '80:80'
+    volumes:
+      - moodle_data:/var/www/moodledata
+      - ./moodle_platform/theme_ced:/var/www/html/theme/ced
+      - ./moodle_platform/config.php:/var/www/html/config.php
+    networks:
+      - campus_network
+    depends_on:
+      - mariadb
+    restart: always
+
+  backend:
+    build: ./backend
+    ports:
+      - '5000:5000'
+    env_file: .env
+    networks:
+      - campus_network
+    depends_on:
+      - mariadb
+
+volumes:
+  mariadb_data:
+    driver: local
+  moodle_data:
+    driver: local
+
+networks:
+  campus_network:
+    driver: bridge
