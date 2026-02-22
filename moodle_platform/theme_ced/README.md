@@ -1,1 +1,0 @@
-CED Moodle Theme Placeholder

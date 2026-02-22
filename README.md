@@ -19,6 +19,7 @@ PLATAFORMA_CED/
 │   │   ├── layout/     # View Controllers separated by domain (login/ & standard/)
 │   │   ├── style/      # CSS Files separated by domain (login/ & standard/)
 │   │   ├── templates/  # Pure Mustache HTML templating (Views)
+│   │   │   └── login_view.mustache # MAIN ENTRY VIEW for the login modal
 │   │   ├── pix/        # Core Moodle assets (Icons, Hero background)
 │   │   └── config.php  # Theme registration
 │   └── config.php      # Main Moodle instance configuration
@@ -26,6 +27,12 @@ PLATAFORMA_CED/
 ├── .env                # Global environment variables
 └── docker-compose.yml  # Infrastructure Orchestration
 ```
+
+### 🎨 Moodle Theme Architecture (theme_ced)
+El tema personalizado de Moodle (`theme_ced`) fue construido siguiendo el modelo **MVC (Model-View-Controller)** moderno exigido por Moodle para asegurar mantenibilidad a nivel empresarial:
+- **Vista Principal (`login_view.mustache`)**: Este archivo es el **corazón del diseño visual**. Toda la estructura HTML (el modal flotante superpuesto, el fondo de pantalla completa, botones personalizados y re-estructuración visual de Moodle) reside aquí como plantillas Mustache en estado puro.
+- **Controlador (`layout/login/login.php`)**: Funciona unicamente como puente. Recibe las instrucciones nativas de Moodle e inyecta la plantilla `login_view.mustache` a través del motor `render_from_template`.
+- **CSS Avanzado (`style/login/login.css`)**: Estilizado mediante **Flexbox**, ordena inyección dinámica de módulos (Guest Login, Forgot Password, Lang Menu) sin utilizar "hacks", manipulando la jerarquía nativa de componentes de Moodle y aplicando diseño *Glassmorphism* (Modal).
 
 ## 🚀 Getting Started
 

@@ -1,97 +1,164 @@
-/* ORANGE THEME LOGIN STYLES */
-
 body#ced-login-page {
-    background: #fff !important;
+    background: #0f172a url('[[pix:theme_ced|ced-hero]]') no-repeat center center fixed !important;
+    background-size: cover !important;
     margin: 0 !important;
     padding: 0 !important;
-    overflow: hidden;
-    font-family: 'Roboto', 'Inter', sans-serif !important;
-}
-
-.split-viewport {
-    display: flex;
+    font-family: 'Inter', sans-serif !important;
     height: 100vh;
+    overflow: hidden;
+}
+
+.full-screen-bg {
     width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
 }
 
-/* LEFT PANEL */
-.orange-panel {
-    flex: 0 0 71%;
-    background-image: url('[[pix:theme_ced|ced-hero]]');
-    background-size: cover;
-    background-position: center;
-}
-
-/* RIGHT PANEL */
-.login-panel {
-    flex: 0 0 29%;
-    background: #ffffff;
+/* TOP NAV & BUTTON */
+.top-nav {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem 4rem;
     display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.top-login-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.85rem 2rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.top-login-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+/* MODAL OVERLAY */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
-    overflow-y: auto;
+    z-index: 100;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
-.login-container-inner {
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* MODAL CONTAINER */
+.modal-container {
+    background: #ffffff;
     width: 100%;
-    max-width: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 440px;
+    border-radius: 24px;
+    padding: 3.5rem 3rem;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-sizing: border-box;
 }
 
-/* LOGO STYLING */
-.login-logo {
-    margin-bottom: 2rem;
+.modal-overlay.active .modal-container {
+    transform: translateY(0) scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: transparent;
+    border: none;
+    font-size: 1.8rem;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: color 0.2s;
+    line-height: 1;
+}
+
+.modal-close-btn:hover {
+    color: #0f172a;
+}
+
+/* LOGO */
+.modal-logo {
     text-align: center;
+    margin-bottom: 2.5rem;
 }
 
 .ced-logo-text {
-    font-size: 3rem;
-    font-weight: 800;
-    line-height: 1;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #1e293b;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #333;
+    letter-spacing: -0.05em;
+    line-height: 1;
 }
 
 .ced-c {
-    color: #e67e22;
-    /* Orange color for the 'C' */
-    font-size: 3.5rem;
+    color: #e30613;
+    /* Brand red */
+    font-size: 3.2rem;
+    margin-right: -2px;
 }
 
 .platform-subtitle {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     font-weight: 700;
+    color: #64748b;
     letter-spacing: 0.1em;
-    color: #7f8c8d;
-    margin-top: 0.25rem;
+    margin-top: 0.5rem;
 }
 
-.login-header {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #555;
-    margin-bottom: 2rem;
+/* OVERRIDE MOODLE FORM CLASSES TO ALIGN */
+.moodle-form-wrapper {
+    width: 100%;
 }
 
-/* MOODLE FORM OVERRIDES */
 #ced-login-page .login-container {
     width: 100% !important;
     max-width: 100% !important;
     margin: 0 !important;
+    padding: 0 !important;
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
 }
 
 #ced-login-page .card {
-    background: transparent !important;
     border: none !important;
+    background: transparent !important;
 }
 
 #ced-login-page .card-body {
@@ -102,137 +169,212 @@ body#ced-login-page {
     display: none !important;
 }
 
-#ced-login-page .form-control {
-    background: #f9f9f9 !important;
-    border: 1px solid #ddd !important;
-    border-radius: 4px !important;
-    padding: 12px 12px 12px 40px !important;
-    /* Space for icons */
-    height: auto !important;
-    font-size: 0.9rem !important;
-    color: #333 !important;
+/* FIXING CURRENT FORM ALIGNMENTS */
+#ced-login-page .login-form {
+    display: flex;
+    flex-direction: column;
 }
 
-/* User Icon Placeholder */
-.login-form .form-group:first-of-type::before {
-    content: '👤';
-    position: absolute;
-    left: 14px;
-    top: 42px;
-    z-index: 10;
-    font-size: 14px;
-    opacity: 0.5;
-}
-
-/* Lock Icon Placeholder */
-.login-form .form-group:nth-of-type(2)::before {
-    content: '🔒';
-    position: absolute;
-    left: 14px;
-    top: 42px;
-    z-index: 10;
-    font-size: 14px;
-    opacity: 0.5;
-}
-
-.login-form .form-group {
+#ced-login-page .login-form .form-group {
+    margin-bottom: 1.5rem !important;
     position: relative;
+    width: 100%;
 }
 
 #ced-login-page .login-form label {
     display: flex !important;
-    justify-content: space-between;
-    width: 100%;
-    font-size: 0.8rem !important;
-    font-weight: 500 !important;
-    color: #666 !important;
-    margin-bottom: 0.3rem !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+    margin-bottom: 0.5rem !important;
+    text-transform: uppercase;
 }
 
-/* Styled 'Forgot Password' link positioning */
-.login-form .form-group:nth-of-type(2) label::after {
-    content: 'Olvidé mi contraseña';
-    font-size: 10px;
-    color: #e67e22;
-    font-weight: 600;
+#ced-login-page .form-control {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 14px !important;
+    padding: 16px 16px 16px 44px !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #f8fafc !important;
+    color: #0f172a !important;
+    font-size: 1rem !important;
+    transition: all 0.2s;
+    outline: none !important;
 }
 
 #ced-login-page .form-control:focus {
-    border-color: #e67e22 !important;
-    box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.1) !important;
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1) !important;
+    background: #ffffff !important;
 }
 
+/* Pseudo-icons inside inputs */
+#ced-login-page .login-form .form-group:nth-of-type(1)::before {
+    content: '👤';
+    position: absolute;
+    left: 14px;
+    top: 40px;
+    z-index: 10;
+    opacity: 0.4;
+    font-size: 1.1rem;
+}
+
+#ced-login-page .login-form .form-group:nth-of-type(2)::before {
+    content: '🔒';
+    position: absolute;
+    left: 14px;
+    top: 40px;
+    z-index: 10;
+    opacity: 0.4;
+    font-size: 1.1rem;
+}
+
+/* Submit Button */
 #ced-login-page .btn-primary {
-    background: #ddd !important;
-    border: none !important;
-    color: #fff !important;
-    font-weight: 600 !important;
-    padding: 12px !important;
-    border-radius: 8px !important;
     width: 100% !important;
+    background: #2563eb !important;
+    border: none !important;
+    color: white !important;
+    padding: 16px !important;
+    border-radius: 14px !important;
+    font-weight: 800 !important;
+    font-size: 1rem !important;
     margin-top: 1rem !important;
-    cursor: not-allowed;
-    text-transform: none !important;
+    cursor: pointer !important;
+    transition: background 0.2s !important;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
 }
 
-/* When fields are filled, we could use JS to change this, but for CSS we can't easily. 
-   Usually Moodle buttons stay grey until valid or active */
+#ced-login-page .btn-primary:hover {
+    background: #1d4ed8 !important;
+}
 
-#ced-login-page .login-instructions {
+/* Container Flexbox Fix to organize Moodle's native elements */
+.moodle-form-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Force Moodle's login form to be first */
+#ced-login-page .login-container {
+    order: 1;
+}
+
+/* 2. Forgot Password (Moodle Boost uses .login-form-forgotpassword) */
+.login-form-forgotpassword {
+    order: 2;
+    text-align: right;
+    margin-top: -0.5rem;
+    margin-bottom: 1.5rem !important;
+}
+
+.login-form-forgotpassword a,
+.login-forgotpassword a {
+    font-size: 0.85rem !important;
+    color: #2563eb !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+/* Hide default divider */
+.login-divider {
     display: none !important;
+}
+
+/* 3. Guest Access */
+.login-instructions {
+    order: 3;
+    margin-top: 1rem;
+    text-align: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1.5rem;
+    display: block !important;
+}
+
+.login-instructions .login-heading {
+    font-size: 0.95rem;
+    color: #334155;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.login-instructions form {
+    margin-top: 0.5rem;
+}
+
+.login-instructions form button,
+.login-instructions .btn-secondary {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #334155 !important;
+    padding: 10px 20px !important;
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    cursor: pointer !important;
+    width: 100%;
+    transition: background 0.2s;
+}
+
+.login-instructions form button:hover,
+.login-instructions .btn-secondary:hover {
+    background: #f1f5f9 !important;
+}
+
+/* 4. Lang Menu */
+.login-languagemenu {
+    order: 4;
+    text-align: center;
+    margin-top: 1.5rem;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1.5rem;
+}
+
+.login-languagemenu select {
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #475569;
+}
+
+/* Identity Providers */
+#ced-login-page .login-identityproviders {
+    order: 5;
+    margin-top: 1.5rem !important;
 }
 
 /* FOOTER */
 .login-footer {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
     text-align: center;
-    font-size: 0.7rem;
-    color: #999;
-    line-height: 1.4;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1.5rem;
+}
+
+.login-footer p {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
 }
 
 .login-footer a {
-    color: #e67e22;
+    color: #2563eb;
     text-decoration: none;
     font-weight: 600;
 }
 
 .welearning-logo {
-    margin-top: 1.5rem;
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #444;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1e293b;
+    opacity: 0.8;
 }
 
 .we-text {
-    color: #7f8c8d;
-}
-
-/* HELP BUTTON */
-.help-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 32px;
-    height: 32px;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #777;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-@media (max-width: 1024px) {
-    .orange-panel {
-        display: none;
-    }
-
-    .login-panel {
-        flex: 0 0 100%;
-    }
+    color: #94a3b8;
 }
