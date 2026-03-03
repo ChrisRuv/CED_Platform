@@ -1,0 +1,104 @@
+/* ═══════════════════════════════════════════════════
+   Login Page — Buttons (Submit, Guest, Cookies, Lang)
+   ═══════════════════════════════════════════════════ */
+
+/* Primary submit button */
+#page-login-index .btn-primary,
+#page-login-index #loginbtn {
+    width: 100% !important;
+    background: #2563eb !important;
+    border: none !important;
+    color: white !important;
+    padding: 16px !important;
+    border-radius: 14px !important;
+    font-weight: 800 !important;
+    font-size: 1rem !important;
+    margin-top: 0.5rem !important;
+    cursor: pointer !important;
+    transition: background 0.2s !important;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+
+#page-login-index .btn-primary:hover,
+#page-login-index #loginbtn:hover {
+    background: #1d4ed8 !important;
+}
+
+/* Guest access heading */
+#page-login-index h2.login-heading {
+    order: 4;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #334155;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1rem;
+}
+
+/* Guest access button */
+#page-login-index #guestlogin {
+    order: 5;
+    width: 100%;
+}
+
+#page-login-index #loginguestbtn,
+#page-login-index .d-flex button[data-modal="alert"] {
+    background: #f8fafc !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #334155 !important;
+    padding: 12px 20px !important;
+    border-radius: 12px !important;
+    font-weight: 700 !important;
+    font-size: 0.9rem !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    transition: background 0.2s;
+    text-align: center;
+    box-sizing: border-box !important;
+}
+
+#page-login-index #loginguestbtn:hover,
+#page-login-index .d-flex button[data-modal="alert"]:hover {
+    background: #f1f5f9 !important;
+}
+
+/* Container for Cookies & Language selector */
+#page-login-index .loginform > div.d-flex {
+    order: 6;
+    display: block !important;
+    width: 100% !important;
+    margin-top: 0.75rem !important;
+}
+
+/* Language selector */
+#page-login-index .loginform > div.d-flex > .login-languagemenu {
+    margin: 0 0 0.75rem 0 !important;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+#page-login-index .loginform div.login-languagemenu a.dropdown-toggle {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #475569;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    padding: 12px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+}
+
+/* Cookies button */
+#page-login-index .loginform > div.d-flex > button[data-modal="alert"] {
+    width: 100% !important;
+    margin: 0 !important;
+    display: block !important;
+    box-sizing: border-box !important;
+}

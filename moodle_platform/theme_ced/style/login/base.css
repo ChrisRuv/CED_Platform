@@ -1,0 +1,30 @@
+/* ═══════════════════════════════════════════════════
+   Login Page — Base Layout & Background
+   ═══════════════════════════════════════════════════ */
+
+body#page-login-index {
+    background: #0f172a url('[[pix:theme|ced-hero]]') no-repeat center center fixed !important;
+    background-size: cover !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Inter', sans-serif !important;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.full-screen-bg {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+/* Hide Moodle native elements on login page */
+#page-login-index .login-instructions,
+#page-login-index .login-forgotpassword,
+#page-login-index .login-form-forgotpassword,
+#page-login-index .login-languagemenu,
+#page-login-index .login-identityproviders,
+#page-login-index .login-divider {
+    display: none !important;
+}

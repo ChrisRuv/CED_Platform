@@ -1,0 +1,98 @@
+/* ═══════════════════════════════════════════════════
+   Login Page — Footer & Dark Mode
+   ═══════════════════════════════════════════════════ */
+
+/* Footer */
+.login-footer {
+    margin-top: 1.5rem;
+    text-align: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 1rem;
+}
+
+.login-footer p {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin: 0 0 1rem 0;
+    line-height: 1.5;
+}
+
+.login-footer a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.welearning-logo {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1e293b;
+    opacity: 0.8;
+}
+
+.we-text {
+    color: #94a3b8;
+}
+
+/* ═══════════════════════════════════════════════════
+   Dark Mode Support
+   ═══════════════════════════════════════════════════ */
+@media (prefers-color-scheme: dark) {
+    .modal-container {
+        background: #1e293b;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    .ced-logo-text { color: #f8fafc; }
+    .platform-subtitle { color: #94a3b8; }
+
+    #page-login-index .login-form label,
+    #page-login-index h2.login-heading,
+    .welearning-logo {
+        color: #f1f5f9 !important;
+    }
+
+    #page-login-index .form-control {
+        background: #0f172a !important;
+        border: 1px solid #334155 !important;
+        color: #f8fafc !important;
+    }
+
+    #page-login-index .form-control:focus {
+        background: #1e293b !important;
+        border-color: #3b82f6 !important;
+    }
+
+    /* Secondary buttons (Guest, Cookies, Lang) */
+    #page-login-index #loginguestbtn,
+    #page-login-index .d-flex button[data-modal="alert"],
+    #page-login-index .login-languagemenu a.dropdown-toggle {
+        background: #0f172a !important;
+        border: 1px solid #334155 !important;
+        color: #f1f5f9 !important;
+    }
+
+    #page-login-index #loginguestbtn:hover,
+    #page-login-index .d-flex button[data-modal="alert"]:hover,
+    #page-login-index .login-languagemenu a.dropdown-toggle:hover {
+        background: #334155 !important;
+    }
+
+    /* Borders & dividers */
+    #page-login-index h2.login-heading,
+    .login-footer,
+    #page-login-index .login-languagemenu a.dropdown-toggle {
+        border-top: 1px solid #334155 !important;
+    }
+
+    .login-footer p, .we-text {
+        color: #94a3b8;
+    }
+
+    .custom-forgot-link,
+    #page-login-index .login-form-forgotpassword a,
+    .login-footer a {
+        color: #3b82f6 !important;
+    }
+}

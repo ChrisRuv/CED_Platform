@@ -2,7 +2,15 @@
 defined('MOODLE_INTERNAL') || die();
 
 $THEME->name = 'ced';
-$THEME->sheets = ['login', 'general'];
+$THEME->sheets = [
+    'login/base',
+    'login/navigation',
+    'login/modal',
+    'login/form',
+    'login/buttons',
+    'login/footer-darkmode',
+    'general',
+];
 $THEME->editor_sheets = [];
 $THEME->parents = ['boost'];
 $THEME->enable_dock = false;
@@ -14,6 +22,11 @@ $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 $THEME->layouts = [
     'login' => [
         'file' => 'login/login.php',
+        'regions' => [],
+        'options' => ['nonavbar' => true, 'noblocks' => true],
+    ],
+    'frontpage' => [
+        'file' => 'frontpage.php',
         'regions' => [],
         'options' => ['nonavbar' => true, 'noblocks' => true],
     ],

@@ -1,0 +1,125 @@
+/* ═══════════════════════════════════════════════════
+   Login Page — Form Fields & Moodle Overrides
+   ═══════════════════════════════════════════════════ */
+
+/* Wrapper for the Moodle form */
+.moodle-form-wrapper {
+    width: 100%;
+}
+
+#page-login-index .login-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+#page-login-index .card {
+    border: none !important;
+    background: transparent !important;
+}
+
+#page-login-index .card-body {
+    padding: 0 !important;
+}
+
+#page-login-index .card-title {
+    display: none !important;
+}
+
+/* Form layout */
+#page-login-index .login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#page-login-index .login-form .form-group {
+    margin-bottom: 1rem !important;
+    position: relative;
+    width: 100%;
+}
+
+/* Field labels */
+#page-login-index .login-form label {
+    display: flex !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+    margin-bottom: 0.5rem !important;
+    text-transform: uppercase;
+}
+
+/* Text inputs */
+#page-login-index .form-control {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 14px !important;
+    padding: 12px 12px 12px 40px !important;
+    border: 1px solid #cbd5e1 !important;
+    background: #f8fafc !important;
+    color: #0f172a !important;
+    font-size: 0.95rem !important;
+    transition: all 0.2s;
+    outline: none !important;
+}
+
+#page-login-index .form-control:focus {
+    border-color: #2563eb !important;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1) !important;
+    background: #ffffff !important;
+}
+
+/* Emoji pseudo-icons inside inputs */
+#page-login-index .login-form .form-group:nth-of-type(1)::before {
+    content: '👤';
+    position: absolute;
+    left: 14px;
+    top: 35px;
+    z-index: 10;
+    opacity: 0.4;
+    font-size: 1rem;
+}
+
+#page-login-index .login-form .form-group:nth-of-type(2)::before {
+    content: '🔒';
+    position: absolute;
+    left: 14px;
+    top: 35px;
+    z-index: 10;
+    opacity: 0.4;
+    font-size: 1rem;
+}
+
+/* Moodle native form structure override */
+#page-login-index .loginform {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* Hide duplicate Moodle native links */
+#page-login-index .login-instructions,
+#page-login-index .login-forgotpassword,
+#page-login-index .login-identityproviders,
+#page-login-index .login-divider,
+#page-login-index .divider.border-left {
+    display: none !important;
+}
+
+/* Forgot Password link */
+#page-login-index .login-form-forgotpassword {
+    text-align: right;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    order: 3;
+}
+
+#page-login-index .login-form-forgotpassword a {
+    font-size: 0.85rem;
+    color: #2563eb;
+    font-weight: 600;
+    text-decoration: none;
+}

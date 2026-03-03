@@ -51,3 +51,16 @@ h6 {
     background-color: #1d4ed8;
     border-color: #1d4ed8;
 }
+
+/* Custom Navbar Logo injected to supersede the Default Moodle Site Name */
+.navbar .navbar-brand .site-name {
+    display: none !important;
+}
+.navbar .navbar-brand {
+    background-image: url('[[pix:theme|logo]]');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    min-width: 180px;
+    height: 45px;
+}
