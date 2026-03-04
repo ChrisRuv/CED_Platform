@@ -1,0 +1,20 @@
+<?php
+$STYLES = [
+    'section' => 'py-20 bg-ced-gray',
+    'container' => 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8',
+    'header' => 'text-center mb-16',
+    'title' => 'text-3xl md:text-4xl font-bold text-white mb-4',
+    'subtitle' => 'text-xl text-gray-300',
+    'grid' => 'grid grid-cols-1 md:grid-cols-2 gap-12',
+    'info_card' => 'hover-card bg-[#0a0a0a] p-8 rounded-xl shadow-lg',
+    'info_title' => 'text-2xl font-bold text-white mb-6',
+    'info_items' => 'space-y-4',
+    'icon_circle' => 'w-12 h-12 bg-ced-accent rounded-full flex items-center justify-center mr-4',
+    'icon_svg' => 'w-6 h-6 text-white',
+    'label' => 'font-semibold text-white',
+    'value' => 'text-gray-300',
+    'why_card' => 'hover-card bg-ced-blue p-8 rounded-xl shadow-lg text-white',
+    'why_title' => 'text-xl font-bold mb-4',
+    'why_list' => 'space-y-2',
+    'check_icon' => 'w-5 h-5 text-ced-accent mr-2',
+];

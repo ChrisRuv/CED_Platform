@@ -1,0 +1,23 @@
+<?php
+$STYLES = [
+    'section' => 'py-20 bg-[#0a0a0a] clip-diagonal',
+    'container' => 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8',
+    'header' => 'text-center mb-16',
+    'title' => 'text-3xl md:text-4xl font-bold text-white mb-4',
+    'divider' => 'w-24 h-1 bg-ced-accent mx-auto',
+    'subtitle' => 'mt-4 text-xl text-gray-300',
+    'grid' => 'grid grid-cols-1 md:grid-cols-2 gap-12 items-center',
+    'image' => 'rounded-lg shadow-xl hover-card w-full',
+    'cards_wrap' => 'order-1 md:order-2 space-y-6',
+    'card' => 'hover-card bg-ced-gray p-6 rounded-xl border-l-4',
+    'card_title' => 'text-xl font-bold text-white mb-2',
+    'card_text' => 'text-gray-300',
+    'audience_section' => 'py-20 bg-ced-blue text-white clip-diagonal-reverse',
+    'audience_title' => 'text-3xl md:text-4xl font-bold mb-4',
+    'audience_desc' => 'text-gray-400 max-w-2xl mx-auto',
+    'audience_grid' => 'grid grid-cols-1 md:grid-cols-3 gap-8',
+    'audience_card' => 'hover-card bg-[#0a0a0a] bg-opacity-10 backdrop-blur-sm p-8 rounded-2xl border border-white border-opacity-20 text-center',
+    'audience_icon' => 'w-16 h-16 bg-ced-accent rounded-full flex items-center justify-center mx-auto mb-6 text-2xl',
+    'audience_name' => 'text-xl font-bold mb-3',
+    'audience_text' => 'text-gray-300',
+];

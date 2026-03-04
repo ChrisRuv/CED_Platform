@@ -36,7 +36,6 @@
     </script>
 
     <style>
-        /* ── Base Typography ─────────────────────────────── */
         body {
             font-family: 'Open Sans', sans-serif;
             overflow-x: hidden;
@@ -51,7 +50,6 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        /* ── Hover Card Effects ───────────────────────────── */
         .hover-card {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid transparent;
@@ -64,7 +62,6 @@
             z-index: 10;
         }
 
-        /* ── Nav Links ────────────────────────────────────── */
         .nav-link {
             position: relative;
             transition: color 0.3s ease;
@@ -89,7 +86,6 @@
             width: 100%;
         }
 
-        /* ── Layout Utilities ─────────────────────────────── */
         html {
             scroll-behavior: smooth;
         }
@@ -102,7 +98,6 @@
             clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
         }
 
-        /* ── Animations ───────────────────────────────────── */
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -119,7 +114,6 @@
             animation: fadeIn 0.8s ease-out forwards;
         }
 
-        /* ── Misc ─────────────────────────────────────────── */
         details summary::-webkit-details-marker {
             display: none;
         }
@@ -132,36 +126,37 @@
     /**
      * Frontpage Layout — Colegio CED
      *
-     * Cada sección vive en su propio archivo dentro de
-     * layout/components/ para mantener el código organizado.
+     * Arquitectura:
+     *   Repository  → config/site_repository.php  → Datos ($SITE)
+     *   Coordinator → config/coordinator.php       → Flujo ($NAVIGATION, $SECTIONS, $ACTIONS)
+     *   Components  → components/*.php             → Vistas (solo renderizado)
      */
-    $componentsDir = __DIR__ . '/components';
-    ?>
 
-    <?php include $componentsDir . '/navbar.php'; ?>
-    <?php include $componentsDir . '/hero.php'; ?>
-    <?php include $componentsDir . '/nosotros.php'; ?>
-    <?php include $componentsDir . '/pilares.php'; ?>
-    <?php include $componentsDir . '/atletas.php'; ?>
-    <?php include $componentsDir . '/oferta.php'; ?>
-    <?php include $componentsDir . '/contacto.php'; ?>
-    <?php include $componentsDir . '/footer.php'; ?>
-    <?php include $componentsDir . '/modal_login.php'; ?>
+    // 1. Cargar Coordinator (carga Repository internamente)
+    require_once(__DIR__ . '/config/coordinator.php');
+
+    // 2. Renderizar secciones en el orden definido por el Coordinator
+    $componentsDir = __DIR__ . '/components';
+    foreach ($SECTIONS as $section) {
+        $file = $componentsDir . '/' . $section . '/' . $section . '.php';
+        if (file_exists($file)) {
+            include $file;
+        }
+    }
+    ?>
 
     <!-- Moodle Required Placeholder -->
     <div style="display: none;">
-        <?php echo $OUTPUT->main_content(); /* Moodle internal — already sanitized by core */ ?>
+        <?php echo $OUTPUT->main_content(); ?>
     </div>
 
     <?php
-    // OWASP A3:2017 — Reflected XSS Prevention
-    // Sanitizar parámetro GET con intval() para prevenir inyección.
     $showLoginError = isset($_GET['loginerror']) && intval($_GET['loginerror']) === 1;
     ?>
     <?php if ($showLoginError): ?>
         <script>
             document.addEventListener("DOMContentLoaded", function () {
-                document.getElementById('login-modal').classList.remove('hidden');
+                <?php echo $ACTIONS['login_trigger']; ?>;
                 var errorDiv = document.createElement('div');
                 errorDiv.className = 'bg-red-500 text-white rounded p-3 mb-4 text-sm font-semibold text-center mt-4';
                 errorDiv.textContent = 'Verifique sus credenciales o inicie sesión para continuar.';

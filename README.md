@@ -1,91 +1,312 @@
-# CED Educational Platform
+# 🎓 Colegio CED — Plataforma Educativa
 
-Welcome to the CED Educational Platform project structure. This codebase is split into two main parts: a modern React frontend using Next.js and a robust Node.js backend using Express and TypeScript.
-
-## 📁 Project Structure
-
-```text
-PLATAFORMA_CED/
-├── backend/            # Express.js (Node.js) Server (API & TS logic)
-│   ├── src/            # Source code (TypeScript)
-│   ├── package.json    # Backend dependencies
-│   └── Dockerfile      # Dedicated Docker build for the backend
-├── frontend/           # Next.js (React) Application
-│   ├── src/app/        # App router (Latest Next.js strategy)
-│   ├── public/         # Static assets
-│   └── tailwind...     # Tailwind configuration
-├── moodle_platform/    # PHP - Core Learning Management System
-│   ├── theme_ced/      # Custom premium theme for Moodle (Strict Architecture)
-│   │   ├── layout/     # View Controllers separated by domain (login/ & standard/)
-│   │   ├── style/      # CSS Files separated by domain (login/ & standard/)
-│   │   ├── templates/  # Pure Mustache HTML templating (Views)
-│   │   │   └── login_view.mustache # MAIN ENTRY VIEW for the login modal
-│   │   ├── pix/        # Core Moodle assets (Icons, Hero background)
-│   │   └── config.php  # Theme registration
-│   └── config.php      # Main Moodle instance configuration
-├── docs/               # Technical Documentation and Snapshots
-│   └── debug/
-│       └── debug_login_snapshot.html # HTML snapshot for analyzing Moodle's native login DOM structure
-├── .gitignore          # Excludes DB data, Node modules, and .env files
-├── .env                # Global environment variables
-└── docker-compose.yml  # Infrastructure Orchestration
-```
-
-### 🎨 Moodle Theme Architecture (theme_ced)
-
-El tema personalizado de Moodle (`theme_ced`) fue construido siguiendo el modelo **MVC (Model-View-Controller)** moderno exigido por Moodle para asegurar mantenibilidad a nivel empresarial:
-
-- **Archivos Obligatorios Raíz**: `config.php`, `lib.php`, y `version.php` **deben** permanecer forzosamente en la raíz de la carpeta `theme_ced/`. Esta es una regla arquitectónica inquebrantable de Moodle; si se mueven a una subcarpeta, Moodle dejará de detectar el tema inmediatamente.
-- **Doble `config.php` (Explicación)**:
-  - `PLATAFORMA_CED/moodle_platform/config.php`: Es el archivo de configuración **Global** de toda tu plataforma Moodle (Base de datos, dominios, contraseñas de red).
-  - `PLATAFORMA_CED/moodle_platform/theme_ced/config.php`: Es exclusivo del tema visual. Sólo le indica a Moodle qué hojas de CSS y layouts específicos de nuestro tema debe cargar.
-- **Vista Principal (`login_view.mustache`)**: Este archivo es el **corazón del diseño visual** del login. Toda la estructura HTML reside aquí como plantillas.
-- **Controlador (`layout/login/login.php`)**: Funciona unicamente como puente. Recibe las instrucciones nativas de Moodle e inyecta la plantilla `login_view.mustache`.
-- **CSS Avanzado & Dark Mode (`style/login.css`)**: Estilizado mediante **Flexbox**, ordena inyección dinámica de los módulos nativos de Moodle (Cookies, Guest Login, Forgot Password, Lang Menu) para que se alineen a la perfección con la interfaz "Glassmorphism" del Modal. Además cuenta con media queries `@media (prefers-color-scheme: dark)` integradas.
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v18 or higher)
-- Docker & Docker Compose
-
-### Setup
-
-1. **Environment Variables**:
-   A `.env` file exists in the root. Ensure it contains the necessary database and authentication credentials.
-
-2. **Database & Platforms (Docker)**:
-   Run the full Moodle, DB, and Backend ecosystem:
-
-   ```bash
-   docker-compose up -d --build
-   ```
-
-3. **Moodle (PHP) Theme Cache**:
-   If changes are made to the `moodle_platform/theme_ced` structure, enter the container to clear cache:
-
-   ```bash
-   docker exec plataforma_ced-moodle-1 php /var/www/html/admin/cli/purge_caches.php
-   ```
-
-4. **Frontend (TypeScript)**:
-   ```bash
-   cd frontend
-   npm install
-   npm run dev
-   ```
-
-## 🛠 Architecture Decisions
-
-- **Segregation of Concerns**: PHP remains strictly in `/moodle_platform` while TypeScript lives in `/frontend` and `/backend`.
-- **Modular Styles & Layouts**: Moodle's theme uses MVC concepts, separating UI logic (`layout/*.php`), presentation structure (`templates/*.mustache`), and design (`style/*.css`).
-- **Data Protection**: Sensitive files and auto-generated data (`moodledata`, DB volumes) are explicitly ignored via `.gitignore`.
-- **Frontend**: Next.js 14, Tailwind CSS, Lucide Icons, Framer Motion.
-- **Backend**: Express, JWT Auth, Sequelize ORM ready, Zod validation.
-- **Design**: Premium, modern aesthetic with focus on usability and responsiveness.
-- **Config**: Pre-configured environment variables and TypeScript settings.
+> Plataforma Moodle personalizada para el Colegio Elite para Deportistas (CED).  
+> Diseñada para atletas, artistas y mentes sobresalientes.
 
 ---
 
-Created with 💙 for the CED Educational Platform.
+## 📐 Arquitectura del Proyecto
+
+El proyecto sigue una arquitectura modular basada en **patrones de diseño** que separan claramente las responsabilidades:
+
+| Patrón                         | Archivo                             | Responsabilidad                                             |
+| ------------------------------ | ----------------------------------- | ----------------------------------------------------------- |
+| **Repository**                 | `config/site_repository.php`        | Fuente única de verdad para todos los datos del negocio     |
+| **Coordinator**                | `config/coordinator.php`            | Control exclusivo del flujo de navegación y orden de vistas |
+| **Template + Style Constants** | `components/*/styles.php` + `*.php` | Renderizado visual con clases inyectables                   |
+
+### Flujo de Datos
+
+```
+frontpage.php (Orquestador)
+    │
+    ├── Carga config/coordinator.php
+    │       │
+    │       └── Carga config/site_repository.php ($SITE)
+    │           Define $NAVIGATION, $SECTIONS, $ACTIONS
+    │
+    └── Itera $SECTIONS → Renderiza components/{seccion}/{seccion}.php
+                                │
+                                └── Carga styles.php ($STYLES)
+                                    Consume $SITE (datos) + $STYLES (clases)
+```
+
+---
+
+## 📁 Estructura de Archivos
+
+```
+PLATAFORMA_CED/
+├── docker-compose.yml
+├── backend/                                  # Backend del proyecto
+│   ├── Dockerfile                            # Docker para Node/TS
+│   ├── package.json
+│   ├── tsconfig.json
+│   ├── src/
+│   │   └── server.ts                         # Servidor Node/TS
+│   └── php/                                  # Lógica PHP (Moodle)
+│       ├── models/
+│       │   └── StudentModel.php              # 🧱 Entidad estudiante
+│       ├── dto/
+│       │   └── CreateStudentDTO.php          # 📋 Validación de entrada
+│       └── repositories/
+│           └── StudentRepository.php         # 💾 Persistencia (CRUD)
+│
+├── moodle_platform/
+│   ├── scripts/                              # Puntos de entrada CLI
+│   │   ├── create_student_cli.php            # Crear estudiantes (usa backend/)
+│   │   └── update_theme.php                  # Aplicar cambios al tema
+│   │
+│   └── theme_ced/                            # Tema personalizado Moodle
+│       ├── config.php                        # Configuración del tema (sheets, layouts)
+│       ├── version.php                       # Versión del tema
+│       │
+│       ├── pix/                              # Assets de imagen
+│       │   └── logo.png                      # Logo del colegio
+│       │
+│       ├── style/                            # Hojas de estilo
+│       │   ├── general.css                   # Estilos generales del tema
+│       │   └── login/                        # CSS modularizado del login
+│       │       ├── base.css                  # Layout y fondo
+│       │       ├── navigation.css            # Botón superior
+│       │       ├── modal.css                 # Overlay y contenedor
+│       │       ├── form.css                  # Campos y overrides Moodle
+│       │       ├── buttons.css               # Botones (submit, guest, cookies)
+│       │       └── footer-darkmode.css       # Footer y modo oscuro
+│       │
+│       └── layout/                           # Páginas y componentes
+│           ├── frontpage.php                 # Orquestador principal
+│           │
+│           ├── config/                       # Configuración centralizada
+│           │   ├── site_repository.php       # 📦 REPOSITORY: Datos del negocio
+│           │   └── coordinator.php           # 🧭 COORDINATOR: Flujo de navegación
+│           │
+│           ├── components/                   # Componentes visuales
+│           │   ├── navbar/
+│           │   │   ├── styles.php            # Constantes de estilo
+│           │   │   └── navbar.php            # Template
+│           │   ├── hero/
+│           │   │   ├── styles.php
+│           │   │   └── hero.php
+│           │   ├── nosotros/
+│           │   │   ├── styles.php
+│           │   │   └── nosotros.php
+│           │   ├── pilares/
+│           │   │   ├── styles.php
+│           │   │   └── pilares.php
+│           │   ├── atletas/
+│           │   │   ├── styles.php
+│           │   │   └── atletas.php
+│           │   ├── oferta/
+│           │   │   ├── styles.php
+│           │   │   └── oferta.php
+│           │   ├── contacto/
+│           │   │   ├── styles.php
+│           │   │   └── contacto.php
+│           │   ├── footer/
+│           │   │   ├── styles.php
+│           │   │   └── footer.php
+│           │   └── modal_login/
+│           │       ├── styles.php
+│           │       └── modal_login.php
+│           │
+│           ├── login/                        # Página de login Moodle
+│           │   └── login.php
+│           │
+│           └── standard/                     # Layout estándar (post-login)
+│               └── columns.php
+```
+
+---
+
+## 🧩 Patrones de Diseño
+
+### 1. Repository Pattern — `site_repository.php`
+
+Centraliza **todos los datos del negocio** en un solo archivo. Los componentes nunca contienen datos hardcodeados.
+
+```php
+// Ejemplo: Cambiar el teléfono
+$SITE->phone = '646-116-3106';
+
+// Ejemplo: Agregar un atleta
+$SITE->atletas[] = [
+    'name'  => 'María López',
+    'sport' => 'Natación',
+    'image' => 'https://example.com/maria.jpg',
+];
+```
+
+**¿Qué contiene?**
+
+- Información de contacto (email, teléfono, ubicación)
+- Branding (logo, colores)
+- Contenido de todas las secciones (hero, pilares, FAQ, etc.)
+- Datos de atletas y oferta educativa
+
+### 2. Coordinator Pattern — `coordinator.php`
+
+Controla **exclusivamente el flujo de navegación**:
+
+```php
+// Orden del menú
+$NAVIGATION = [
+    ['id' => 'inicio',   'label' => 'Inicio'],
+    ['id' => 'nosotros', 'label' => 'Nosotros'],
+    // ...
+];
+
+// Orden de renderizado de secciones
+$SECTIONS = ['navbar', 'hero', 'nosotros', 'pilares', ...];
+
+// Acciones de UI (abrir/cerrar modal, menú móvil)
+$ACTIONS = [
+    'login_trigger' => "document.getElementById('login-modal')...",
+];
+```
+
+**Para reordenar secciones**, solo cambia el array `$SECTIONS`.  
+**Para agregar un enlace al menú**, solo agrega al array `$NAVIGATION`.
+
+### 3. Style Constants — `styles.php`
+
+Cada componente tiene un archivo `styles.php` que define todas las clases Tailwind como constantes:
+
+```php
+// components/hero/styles.php
+$STYLES = [
+    'section'     => 'relative pt-20 pb-16 min-h-screen ...',
+    'title'       => 'text-5xl md:text-6xl font-extrabold ...',
+    'btn_primary' => 'px-8 py-4 bg-ced-blue text-white ...',
+];
+```
+
+```php
+// components/hero/hero.php
+<section class="<?php echo $STYLES['section']; ?>">
+    <h1 class="<?php echo $STYLES['title']; ?>">...</h1>
+</section>
+```
+
+**Ventajas:**
+
+- Cambiar el diseño de un componente sin tocar su HTML
+- Reutilizar estilos entre elementos del mismo componente
+- Visibilidad clara de todas las clases usadas
+
+### 4. Backend — Model / DTO / Repository
+
+La lógica de negocio del backend sigue una arquitectura por capas:
+
+```
+Script CLI (punto de entrada)
+    │
+    ├── CreateStudentDTO::fromArray($data)     ← Valida y sanitiza
+    │
+    ├── StudentRepository->create($dto)        ← Hashea password, persiste en DB
+    │       │
+    │       └── StudentModel->toMoodleObject() ← Convierte a stdClass de Moodle
+    │
+    └── Respuesta (éxito/error)
+```
+
+| Capa           | Archivo                                          | Responsabilidad                                  |
+| -------------- | ------------------------------------------------ | ------------------------------------------------ |
+| **Model**      | `backend/php/models/StudentModel.php`            | Estructura de la entidad, conversión a Moodle    |
+| **DTO**        | `backend/php/dto/CreateStudentDTO.php`           | Validación de email, password, campos requeridos |
+| **Repository** | `backend/php/repositories/StudentRepository.php` | CRUD: find, create, updatePassword, exists       |
+
+```php
+// Ejemplo: Crear un estudiante
+$dto = CreateStudentDTO::fromArray([
+    'username'  => 'maria',
+    'password'  => 'MiPassword123!',
+    'email'     => 'maria@ced.local',
+    'firstname' => 'María',
+    'lastname'  => 'López',
+]);
+$userId = $repository->create($dto);
+```
+
+**Reglas:**
+
+- Los scripts CLI **nunca** tocan `$DB` directamente
+- El DTO **valida** antes de que los datos lleguen al Repository
+- El Repository es la **única** capa que habla con la base de datos
+- El Model define la **estructura** de la entidad
+
+---
+
+## 🔒 Seguridad (OWASP Top 10)
+
+| Vulnerabilidad     | Mitigación                                                 |
+| ------------------ | ---------------------------------------------------------- |
+| **XSS (A3)**       | Todo output PHP escapado con `htmlspecialchars()`          |
+| **CSRF (A5)**      | Login token de Moodle protegido con `class_exists()` guard |
+| **Injection (A1)** | Parámetros GET sanitizados con `intval()`                  |
+| **DOM XSS**        | Uso de `textContent` en vez de `innerHTML`/`innerText`     |
+
+---
+
+## 🚀 Guía Rápida
+
+### Cambiar datos del sitio
+
+Edita **solo** `layout/config/site_repository.php`:
+
+```php
+$SITE->email = 'nuevo@email.com';
+$SITE->phone = '123-456-7890';
+```
+
+### Cambiar el orden de las secciones
+
+Edita **solo** `layout/config/coordinator.php`:
+
+```php
+$SECTIONS = ['navbar', 'hero', 'atletas', 'nosotros', ...]; // nuevo orden
+```
+
+### Cambiar el diseño de un componente
+
+Edita **solo** `components/{nombre}/styles.php`:
+
+```php
+$STYLES['section'] = 'py-32 bg-red-500'; // nuevo estilo
+```
+
+### Agregar una nueva sección
+
+1. Crea la carpeta: `components/nueva_seccion/`
+2. Crea `styles.php` con las constantes
+3. Crea `nueva_seccion.php` con el template
+4. Agrega `'nueva_seccion'` al array `$SECTIONS` en `coordinator.php`
+
+### Purgar caché después de cambios
+
+```bash
+docker exec -w /var/www/html plataforma_ced-moodle-1 php admin/cli/purge_caches.php
+```
+
+---
+
+## 🛠 Stack Tecnológico
+
+- **Backend PHP:** Model / DTO / Repository (lógica Moodle)
+- **Backend Node:** Express + TypeScript
+- **Frontend:** Tailwind CSS (CDN), Montserrat + Open Sans
+- **CMS:** Moodle 4.x (PHP)
+- **Infraestructura:** Docker + Docker Compose
+- **Base de datos:** MariaDB
+
+---
+
+## 📞 Contacto
+
+- **Email:** homeschoolced@gmail.com
+- **Teléfono:** 646-116-3106
+- **Ubicación:** Ensenada, Baja California
+
+---
+
+_© 2026 Colegio CED. Todos los derechos reservados._

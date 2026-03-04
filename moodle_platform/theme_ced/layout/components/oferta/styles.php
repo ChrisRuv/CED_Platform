@@ -1,0 +1,20 @@
+<?php
+$STYLES = [
+    'section' => 'py-20 bg-[#0a0a0a]',
+    'container' => 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8',
+    'grid' => 'grid grid-cols-1 lg:grid-cols-2 gap-16',
+    'title' => 'text-3xl font-bold text-white mb-8',
+    'offer_list' => 'space-y-4',
+    'offer_card' => 'hover-card flex items-center p-6 bg-ced-gray rounded-lg border-l-4 cursor-pointer',
+    'offer_num' => 'text-2xl font-bold text-ced-accent mr-4',
+    'offer_title' => 'text-xl font-bold text-gray-100',
+    'offer_text' => 'text-sm text-gray-300',
+    'faq_list' => 'space-y-4',
+    'faq_item' => 'group hover-card bg-[#0a0a0a] border border-gray-800 rounded-lg p-4 open:shadow-lg transition-all duration-300',
+    'faq_summary' => 'flex justify-between items-center font-medium cursor-pointer list-none text-white',
+    'faq_answer' => 'text-gray-300 mt-3',
+    'commit_section' => 'py-20 bg-gradient-to-r from-ced-blue to-ced-light text-white',
+    'commit_title' => 'text-3xl md:text-4xl font-bold mb-6',
+    'commit_text' => 'text-xl text-gray-300 max-w-3xl mx-auto mb-8',
+    'commit_sub' => 'text-lg text-gray-400 font-semibold',
+];
