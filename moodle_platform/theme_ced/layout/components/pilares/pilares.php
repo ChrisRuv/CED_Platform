@@ -17,6 +17,7 @@
         </div>
     </div>
 </section>
+
 <!-- Image Break -->
 <section class="<?php echo $STYLES['break_section']; ?>">
     <div class="<?php echo $STYLES['container']; ?>">

@@ -5,7 +5,6 @@ import morgan from 'morgan';
 import dotenv from 'dotenv';
 import path from 'path';
 
-// Load environment variables from root
 dotenv.config({ path: path.join(__dirname, '../../.env') });
 
 const app = express();

@@ -45,12 +45,19 @@ PLATAFORMA_CED/
 │   ├── src/
 │   │   └── server.ts                         # Servidor Node/TS
 │   └── php/                                  # Lógica PHP (Moodle)
-│       ├── models/
-│       │   └── StudentModel.php              # 🧱 Entidad estudiante
+│       ├── controllers/
+│       │   └── StudentController.php         # 🎮 Punto de entrada, manejo de errores
+│       ├── services/
+│       │   └── StudentService.php            # ⚙️  Lógica de negocio
+│       ├── repositories/
+│       │   └── StudentRepository.php         # 🔍 Queries específicas de Student
+│       ├── database/
+│       │   ├── BaseDatabase.php              # 💾 CRUD genérico (abstract)
+│       │   └── UserDatabase.php              # 💾 Tabla 'user' (extends Base)
 │       ├── dto/
 │       │   └── CreateStudentDTO.php          # 📋 Validación de entrada
-│       └── repositories/
-│           └── StudentRepository.php         # 💾 Persistencia (CRUD)
+│       └── models/
+│           └── StudentModel.php              # 🧱 Estructura de la entidad
 │
 ├── moodle_platform/
 │   ├── scripts/                              # Puntos de entrada CLI
@@ -194,46 +201,72 @@ $STYLES = [
 - Reutilizar estilos entre elementos del mismo componente
 - Visibilidad clara de todas las clases usadas
 
-### 4. Backend — Model / DTO / Repository
+### 4. Backend — Controller → Service → Repository → Database → Model
 
-La lógica de negocio del backend sigue una arquitectura por capas:
+La lógica de negocio del backend sigue una arquitectura por capas con separación estricta de responsabilidades:
 
 ```
-Script CLI (punto de entrada)
+CLI / API (punto de entrada)
     │
-    ├── CreateStudentDTO::fromArray($data)     ← Valida y sanitiza
-    │
-    ├── StudentRepository->create($dto)        ← Hashea password, persiste en DB
-    │       │
-    │       └── StudentModel->toMoodleObject() ← Convierte a stdClass de Moodle
-    │
-    └── Respuesta (éxito/error)
+    └── Controller (recibe request, formatea errores)
+            │
+            └── Service (lógica de negocio)
+                    │
+                    └── Repository (queries específicas de Student)
+                            │
+                            └── Database (CRUD genérico por tabla)
+                                    │
+                                    └── Model (estructura de la entidad)
 ```
 
-| Capa           | Archivo                                          | Responsabilidad                                  |
-| -------------- | ------------------------------------------------ | ------------------------------------------------ |
-| **Model**      | `backend/php/models/StudentModel.php`            | Estructura de la entidad, conversión a Moodle    |
-| **DTO**        | `backend/php/dto/CreateStudentDTO.php`           | Validación de email, password, campos requeridos |
-| **Repository** | `backend/php/repositories/StudentRepository.php` | CRUD: find, create, updatePassword, exists       |
+| Capa           | Archivo                              | Responsabilidad                                        |
+| -------------- | ------------------------------------ | ------------------------------------------------------ |
+| **Controller** | `controllers/StudentController.php`  | Punto de entrada, try/catch, formateo de respuesta     |
+| **Service**    | `services/StudentService.php`        | Lógica: createOrUpdate, createBatch, changePassword    |
+| **Repository** | `repositories/StudentRepository.php` | Queries: findByUsername, findByEmail, create           |
+| **Database**   | `database/UserDatabase.php`          | CRUD genérico para tabla `user` (extends BaseDatabase) |
+| **DTO**        | `dto/CreateStudentDTO.php`           | Validación: email, password, campos requeridos         |
+| **Model**      | `models/StudentModel.php`            | Estructura de entidad, conversión a Moodle             |
 
 ```php
-// Ejemplo: Crear un estudiante
-$dto = CreateStudentDTO::fromArray([
+// Ejemplo: Crear un estudiante desde cualquier punto de entrada
+$controller = new StudentController($DB, $CFG);
+$result = $controller->store([
     'username'  => 'maria',
     'password'  => 'MiPassword123!',
     'email'     => 'maria@ced.local',
     'firstname' => 'María',
     'lastname'  => 'López',
 ]);
-$userId = $repository->create($dto);
+// $result = ['action' => 'created', 'username' => 'maria', 'user_id' => 42, ...]
+
+// Ejemplo: Crear múltiples estudiantes
+$results = $controller->storeBatch([...]);
+
+// Ejemplo: Cambiar contraseña
+$result = $controller->updatePassword('maria', 'NuevaPass789!');
+```
+
+**Para agregar una nueva entidad** (ej. `Course`):
+
+```
+1. database/CourseDatabase.php     ← class CourseDatabase extends BaseDatabase { TABLE = 'course'; }
+2. models/CourseModel.php          ← Estructura de la entidad
+3. dto/CreateCourseDTO.php         ← Validación
+4. repositories/CourseRepository.php ← Queries específicas
+5. services/CourseService.php      ← Lógica de negocio
+6. controllers/CourseController.php  ← Punto de entrada
 ```
 
 **Reglas:**
 
-- Los scripts CLI **nunca** tocan `$DB` directamente
-- El DTO **valida** antes de que los datos lleguen al Repository
-- El Repository es la **única** capa que habla con la base de datos
-- El Model define la **estructura** de la entidad
+- Los scripts CLI **solo llaman al Controller** — nunca tocan $DB
+- El Controller **maneja todos los errores** (try/catch)
+- El Service **contiene la lógica de negocio** pura
+- El Repository **ejecuta queries** específicas de la entidad
+- La Database **provee CRUD genérico** para una tabla
+- El DTO **valida y sanitiza** datos de entrada
+- El Model **define la estructura** de la entidad
 
 ---
 
