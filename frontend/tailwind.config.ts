@@ -2,9 +2,9 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
     content: [
-        "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/pages *.{js,ts,jsx,tsx,mdx}",
+        "./src/components *.{js,ts,jsx,tsx,mdx}",
+        "./src/app *.{js,ts,jsx,tsx,mdx}",
     ],
     theme: {
         extend: {
@@ -27,6 +27,10 @@ const config: Config = {
                     900: '#0c3f6e',
                     950: '#082849',
                 },
+                'ced-blue': '#1e3a8a',
+                'ced-accent': '#0ea5e9',
+                'ced-gray': '#0f172a',
+                'ced-light': '#3b82f6',
             }
         },
     },

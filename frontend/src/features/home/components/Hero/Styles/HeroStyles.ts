@@ -1,0 +1,22 @@
+export const HERO_STYLES = {
+    section: "relative pt-40 pb-20 md:pt-56 md:pb-40 flex items-center min-h-screen bg-ced-gray overflow-hidden",
+    bg_overlay: "absolute inset-0 pointer-events-none overflow-hidden",
+    bg_circle1: "absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-ced-blue/20 blur-[120px] rounded-full animate-pulse",
+    bg_circle2: "absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-ced-accent/10 blur-[120px] rounded-full animate-delay-1000",
+    container: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full",
+    grid: "grid grid-cols-1 lg:grid-cols-2 gap-16 items-center",
+    content_wrap: "space-y-10",
+    badge: "inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-ced-accent text-xs font-black uppercase tracking-[0.2em] shadow-inner",
+    badge_dot: "flex h-2 w-2 rounded-full bg-ced-accent animate-ping",
+    title: "text-6xl md:text-[5.5rem] font-black text-white leading-[0.95] tracking-tighter",
+    title_accent: "text-transparent bg-clip-text bg-gradient-to-r from-ced-accent to-blue-400",
+    desc: "text-xl text-slate-400 max-w-xl leading-relaxed font-medium",
+    btn_row: "flex flex-col sm:flex-row gap-6 pt-4",
+    btn_primary: "px-12 py-6 bg-ced-blue text-white font-black rounded-2xl shadow-[0_20px_50px_rgba(30,58,138,0.4)] hover:bg-ced-light transition-all transform hover:-translate-y-2 text-center uppercase tracking-widest text-sm flex items-center justify-center gap-3 group",
+    btn_secondary: "px-12 py-6 bg-white/5 text-white border border-white/10 font-black rounded-2xl hover:bg-white/10 transition-all transform hover:-translate-y-1 text-center uppercase tracking-widest text-sm",
+    img_container: "relative lg:block hidden",
+    img_wrap: "relative z-10 rounded-[2.5rem] overflow-hidden border-8 border-white/5 shadow-2xl skew-y-1 hover:skew-y-0 transition-all duration-700 bg-slate-800",
+    img: "object-cover opacity-90 grayscale-[20%] hover:grayscale-0 transition-all duration-700",
+    img_fade: "absolute inset-0 bg-gradient-to-t from-ced-gray via-transparent to-transparent opacity-60",
+    glow: "absolute -bottom-10 -right-10 w-64 h-64 bg-ced-accent/20 blur-[80px] rounded-full z-0"
+};

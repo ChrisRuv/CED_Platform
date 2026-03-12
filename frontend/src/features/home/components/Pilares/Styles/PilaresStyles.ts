@@ -1,0 +1,22 @@
+export const PILARES_STYLES = {
+    section: "py-32 bg-ced-gray text-white relative overflow-hidden",
+    container: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10",
+    grid: "grid grid-cols-1 lg:grid-cols-2 gap-24 items-center",
+    content_wrap: "space-y-16",
+    header: "space-y-6",
+    label: "text-ced_accent font-black text-xs uppercase tracking-[0.4em]",
+    title: "text-6xl font-black leading-none tracking-tighter",
+    list_wrap: "space-y-12",
+    item: "flex gap-8 group",
+    item_num: "w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-2xl font-black text-ced-accent group-hover:bg-ced-accent group-hover:text-white transition-all shadow-lg shrink-0",
+    item_content: "space-y-2",
+    item_title: "text-2xl font-black mb-2 text-white/90",
+    item_desc: "text-white/50 font-medium leading-relaxed",
+    image_wrap: "relative group",
+    image_glow: "absolute -inset-10 bg-ced-blue/20 blur-[100px] rounded-full",
+    image_container: "relative rounded-[4rem] overflow-hidden border-8 border-white/5 shadow-2xl",
+    image: "object-cover opacity-70",
+    image_overlay: "absolute inset-0 bg-gradient-to-t from-ced-gray via-transparent to-transparent",
+    image_badge: "absolute bottom-12 left-12 right-12 p-8 bg-white/5 backdrop-blur-md rounded-[2rem] border border-white/10",
+    image_quote: "text-white font-black text-2xl italic tracking-tight"
+};

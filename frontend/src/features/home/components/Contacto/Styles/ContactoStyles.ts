@@ -1,0 +1,23 @@
+export const CONTACTO_STYLES = {
+    section: "py-32 bg-white",
+    container: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+    card_wrap: "bg-ced-gray rounded-[3.5rem] overflow-hidden shadow-2xl flex flex-col lg:flex-row border border-white/5",
+    info_col: "lg:w-1/2 p-16 md:p-24 space-y-12 bg-white/5",
+    header: "space-y-4",
+    title: "text-5xl font-black text-white tracking-tighter",
+    subtitle: "text-white/50 font-bold text-lg",
+    info_list: "space-y-8",
+    info_item: "flex items-center gap-6 group",
+    icon_wrap: (color: string) => `w-14 h-14 rounded-2xl bg-white/5 flex items-center justify-center ${color} transition-all`,
+    info_label: "text-xs font-black uppercase tracking-widest text-white/30",
+    info_value: "text-lg font-bold text-white",
+    form_col: "lg:w-1/2 p-16 md:p-24 bg-white self-center lg:rounded-l-[3rem] shadow-2xl",
+    form: "space-y-6",
+    grid: "grid grid-cols-1 sm:grid-cols-2 gap-6",
+    field_group: "space-y-2",
+    field_label: "text-xs font-black uppercase tracking-[0.1em] text-slate-400 ml-1",
+    input: "w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-bold",
+    textarea: "w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-bold resize-none",
+    submit_btn: "w-full py-5 bg-ced-blue text-white rounded-2xl font-black uppercase tracking-widest hover:bg-ced-light transition-all shadow-xl shadow-ced-blue/30 transform hover:scale-[1.02]",
+    form_footer: "text-center text-[10px] text-slate-400 font-bold uppercase tracking-widest"
+};

@@ -1,14 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
     title: "CED Platform | Modern Education",
     description: "A premium educational platform for growth and learning.",
 };
-
 export default function RootLayout({
     children,
 }: {
