@@ -41,7 +41,7 @@ $SITE->hero = (object) [
     'description' => 'En Colegio CED, la educación no limita tu talento; lo impulsa. Un modelo diseñado para atletas, artistas y mentes sobresalientes.',
     'cta_primary' => ['label' => 'Conoce el Modelo', 'href' => '#pilares'],
     'cta_secondary' => ['label' => 'Nuestra Historia', 'href' => '#nosotros'],
-    'image' => 'https://image.qwenlm.ai/public_source/ad81d270-0856-47ed-8a2f-40621ffc424c/167cb49ac-0d41-4655-aea9-4c6862e896ac.png',
+    'image' => $OUTPUT->image_url('ced-hero', 'theme_ced'),
 ];
 
 // ─── Filosofía / Nosotros ───────────────────────────────────────────────────
@@ -49,7 +49,7 @@ $SITE->hero = (object) [
 $SITE->nosotros = (object) [
     'title' => 'Filosofía CED',
     'subtitle' => '"Nacimos para romper las barreras del aula convencional"',
-    'image' => 'https://image.qwenlm.ai/public_source/ad81d270-0856-47ed-8a2f-40621ffc424c/12b5c4df8-d02f-4bd5-8ba5-56e5bef89b2f.png',
+    'image' => '',
     'cards' => [
         ['title' => 'Quiénes Somos', 'border' => 'border-ced-blue', 'description' => 'Entendemos que el mundo ha cambiado. Sabemos que la educación tradicional ya no es la única vía para alcanzar el éxito, y que hoy más que nunca, el tiempo es el activo más valioso de nuestros estudiantes.'],
         ['title' => 'Nuestra Historia', 'border' => 'border-ced-accent', 'description' => 'Con más de 10 años de trayectoria, nuestro proyecto nació de una necesidad genuina de nuestra fundadora, Mónica Tabares Rada. Como madre de deportistas de alto rendimiento, creó un modelo donde la dualidad Deporte-Estudio es un motor de crecimiento.'],
@@ -71,15 +71,15 @@ $SITE->pilares = [
     ['icon' => '🤝', 'title' => '4. Formación Integral', 'description' => 'Fomentamos la responsabilidad, la resiliencia y la ética, preparando a los jóvenes para el liderazgo.'],
 ];
 
-$SITE->pilares_image = 'https://image.qwenlm.ai/public_source/ad81d270-0856-47ed-8a2f-40621ffc424c/1efd90157-98d4-4f2f-a060-e97f11508666.png';
+$SITE->pilares_image = '';
 
 // ─── Atletas ────────────────────────────────────────────────────────────────
 
 $SITE->atletas = [
-    ['name' => 'Nombre del Atleta', 'sport' => 'Disciplina', 'image' => 'https://via.placeholder.com/400x500/111111/00ff00?text=Atleta+1'],
-    ['name' => 'Nombre del Atleta', 'sport' => 'Disciplina', 'image' => 'https://via.placeholder.com/400x500/111111/00ff00?text=Atleta+2'],
-    ['name' => 'Nombre del Atleta', 'sport' => 'Disciplina', 'image' => 'https://via.placeholder.com/400x500/111111/00ff00?text=Atleta+3'],
-    ['name' => 'Nombre del Atleta', 'sport' => 'Disciplina', 'image' => 'https://via.placeholder.com/400x500/111111/00ff00?text=Atleta+4'],
+    ['name' => 'Nombre del Atleta', 'sport' => 'Disciplina', 'image' => ''],
+    ['name' => 'Nombre del Atleta', 'sport' => 'Disciplina', 'image' => ''],
+    ['name' => 'Nombre del Atleta', 'sport' => 'Disciplina', 'image' => ''],
+    ['name' => 'Nombre del Atleta', 'sport' => 'Disciplina', 'image' => ''],
 ];
 
 // ─── Oferta Educativa ───────────────────────────────────────────────────────
