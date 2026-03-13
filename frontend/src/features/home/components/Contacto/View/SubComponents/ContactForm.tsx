@@ -5,6 +5,7 @@ import { CONTACTO_DATA } from '../../Model/ContactoModel';
 import FormInput from './FormInput';
 import FormTextArea from './FormTextArea';
 import FormSubmitButton from './FormSubmitButton';
+
 const ContactForm: React.FC = () => {
     const contactStyles = CONTACTO_STYLES;
     const contactData = CONTACTO_DATA;

@@ -1,9 +1,8 @@
 "use client";
 import React from 'react';
 import { CONTACTO_STYLES } from '../../Styles/ContactoStyles';
-import { FormInputProps } from '../../Model/ContactoModel';
-
-const FormInput: React.FC<FormInputProps> = ({ label, placeholder, type = "text" }) => {
+import { FormInputComponentContract } from '../../Model/ContactoModel';
+const FormInput: React.FC<FormInputComponentContract> = ({ label, placeholder, type = "text" }) => {
     const styles = CONTACTO_STYLES;
     return (
         <div className={styles.field_group}>

@@ -1,10 +1,10 @@
-export interface LoginModalViewProps {
+export interface LoginModalComponentContract {
     onClose: () => void;
 }
-export interface LoginFormProps {
+export interface LoginFormComponentContract {
     viewModel: any;
 }
-export interface LoginInputProps {
+export interface LoginInputComponentContract {
     label: string;
     placeholder: string;
     type?: string;
@@ -12,7 +12,7 @@ export interface LoginInputProps {
     onChange: (val: string) => void;
     forgotLink?: { label: string; href: string };
 }
-export interface LoginSubmitButtonProps {
+export interface LoginSubmitComponentContract {
     label: string;
 }
 export const LOGIN_MODAL_DATA = {

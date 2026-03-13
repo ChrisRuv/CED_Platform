@@ -1,4 +1,4 @@
-export interface PilarItemProps {
+export interface PilarComponentContract {
     index: number;
     title: string;
     desc: string;

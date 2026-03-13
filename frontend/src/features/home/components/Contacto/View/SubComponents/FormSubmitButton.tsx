@@ -2,7 +2,6 @@
 import React from 'react';
 import { CONTACTO_STYLES } from '../../Styles/ContactoStyles';
 import { FormSubmitButtonProps } from '../../Model/ContactoModel';
-
 const FormSubmitButton: React.FC<FormSubmitButtonProps> = ({ label, footer }) => {
     const styles = CONTACTO_STYLES;
     return (

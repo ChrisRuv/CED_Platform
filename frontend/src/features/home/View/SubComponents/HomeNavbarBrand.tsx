@@ -1,13 +1,10 @@
 "use client";
-
 import React from 'react';
 import { HOME_STYLES } from '../../Styles/HomeStyles';
 import { SITE_DATA } from '../../Model/SiteRepository';
-
 const HomeNavbarBrand: React.FC = () => {
     const styles = HOME_STYLES.navbar;
     const data = SITE_DATA;
-
     return (
         <div className={styles.logo_wrap}>
             <div className={styles.logo_icon}>C</div>
@@ -18,5 +15,4 @@ const HomeNavbarBrand: React.FC = () => {
         </div>
     );
 };
-
 export default HomeNavbarBrand;

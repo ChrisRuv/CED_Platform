@@ -1,8 +1,8 @@
-export interface FooterLinksSectionProps {
+export interface FooterLinksComponentContract {
     title: string;
     links: string[];
 }
-export interface FooterBottomProps {
+export interface FooterBottomComponentContract {
     copyright: string;
     socials: string[];
 }

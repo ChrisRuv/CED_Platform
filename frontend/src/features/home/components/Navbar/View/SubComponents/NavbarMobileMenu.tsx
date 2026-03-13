@@ -1,9 +1,8 @@
 "use client";
 import React from 'react';
 import { NAVBAR_STYLES } from '../../Styles/NavbarStyles';
-import { NAVBAR_DATA, NavbarMobileMenuProps } from '../../Model/NavbarModel';
-
-const NavbarMobileMenu: React.FC<NavbarMobileMenuProps> = ({ isOpen, onClose, onOpenLogin }) => {
+import { NAVBAR_DATA, NavbarMobileMenuComponentContract } from '../../Model/NavbarModel';
+const NavbarMobileMenu: React.FC<NavbarMobileMenuComponentContract> = ({ isOpen, onClose, onOpenLogin }) => {
     const styles = NAVBAR_STYLES;
     const data = NAVBAR_DATA;
     return (

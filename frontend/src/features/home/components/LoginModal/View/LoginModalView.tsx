@@ -2,11 +2,11 @@
 import React from 'react';
 import { X, Lock } from 'lucide-react';
 import { LOGIN_MODAL_STYLES } from '../Styles/LoginModalStyles';
-import { LOGIN_MODAL_DATA, LoginModalViewProps } from '../Model/LoginModalModel';
+import { LOGIN_MODAL_DATA, LoginModalComponentContract } from '../Model/LoginModalModel';
 import { useLoginModalViewModel } from '../ViewModel/useLoginModalViewModel';
 import LoginForm from './SubComponents/LoginForm';
 
-const LoginModalView: React.FC<LoginModalViewProps> = ({ onClose }) => {
+const LoginModalView: React.FC<LoginModalComponentContract> = ({ onClose }) => {
     const viewModel = useLoginModalViewModel(onClose);
     const modalStyles = LOGIN_MODAL_STYLES;
     const modalData = LOGIN_MODAL_DATA;

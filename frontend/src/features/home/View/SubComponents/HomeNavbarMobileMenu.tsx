@@ -1,19 +1,15 @@
 "use client";
-
 import React from 'react';
 import { HOME_STYLES } from '../../Styles/HomeStyles';
 import { SITE_DATA } from '../../Model/SiteRepository';
-
 interface HomeNavbarMobileMenuActions {
     isOpen: boolean;
     onClose: () => void;
     onOpenLogin: () => void;
 }
-
 const HomeNavbarMobileMenu: React.FC<HomeNavbarMobileMenuActions> = ({ isOpen, onClose, onOpenLogin }) => {
     const styles = HOME_STYLES.navbar;
     const data = SITE_DATA;
-
     return (
         <div className={styles.mobile_menu(isOpen)}>
             <div className={styles.mobile_inner}>
@@ -29,5 +25,4 @@ const HomeNavbarMobileMenu: React.FC<HomeNavbarMobileMenuActions> = ({ isOpen, o
         </div>
     );
 };
-
 export default HomeNavbarMobileMenu;

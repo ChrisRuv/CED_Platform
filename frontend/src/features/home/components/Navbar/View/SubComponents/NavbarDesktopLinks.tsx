@@ -2,9 +2,8 @@
 import React from 'react';
 import { Lock } from 'lucide-react';
 import { NAVBAR_STYLES } from '../../Styles/NavbarStyles';
-import { NAVBAR_DATA, NavbarDesktopLinksProps } from '../../Model/NavbarModel';
-
-const NavbarDesktopLinks: React.FC<NavbarDesktopLinksProps> = ({ onOpenLogin }) => {
+import { NAVBAR_DATA, NavbarDesktopLinksComponentContract } from '../../Model/NavbarModel';
+const NavbarDesktopLinks: React.FC<NavbarDesktopLinksComponentContract> = ({ onOpenLogin }) => {
     const styles = NAVBAR_STYLES;
     const data = NAVBAR_DATA;
     return (

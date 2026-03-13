@@ -1,9 +1,8 @@
 "use client";
 import React from 'react';
 import { PILARES_STYLES } from '../../Styles/PilaresStyles';
-import { PilarItemProps } from '../../Model/PilaresModel';
-
-const PilarItem: React.FC<PilarItemProps> = ({ index, title, desc }) => {
+import { PilarComponentContract } from '../../Model/PilaresModel';
+const PilarItem: React.FC<PilarComponentContract> = ({ index, title, desc }) => {
     const styles = PILARES_STYLES;
     return (
         <div className={styles.item}>

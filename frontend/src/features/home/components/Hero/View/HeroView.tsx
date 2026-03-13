@@ -2,8 +2,7 @@
 import React from 'react';
 import { HERO_STYLES } from '../Styles/HeroStyles';
 import HeroContent from './SubComponents/HeroContent';
-import HeroImage from './SubComponents/HeroImage';
-
+import HeroVideo from './SubComponents/HeroVideo';
 const HeroView: React.FC = () => {
     const heroStyles = HERO_STYLES;
     return (
@@ -15,7 +14,7 @@ const HeroView: React.FC = () => {
             <div className={heroStyles.container}>
                 <div className={heroStyles.grid}>
                     <HeroContent />
-                    <HeroImage />
+                    <HeroVideo />
                 </div>
             </div>
         </section>

@@ -2,7 +2,6 @@
 import React from 'react';
 import { PILARES_STYLES } from '../../Styles/PilaresStyles';
 import { PILARES_DATA } from '../../Model/PilaresModel';
-
 const PilaresHeader: React.FC = () => {
     const styles = PILARES_STYLES;
     const data = PILARES_DATA;

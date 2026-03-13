@@ -10,11 +10,10 @@ import ContactoView from '../components/Contacto/View/ContactoView';
 import FooterView from '../components/Footer/View/FooterView';
 import LoginModalView from '../components/LoginModal/View/LoginModalView';
 import { useHomeViewModel } from '../ViewModel/useHomeViewModel';
-
 const HomeCoordinator: React.FC = () => {
     const viewModel = useHomeViewModel();
     return (
-        <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-ced-blue selection:text-white">
+        <div className="min-h-screen bg-[#020617] font-sans selection:bg-ced-blue selection:text-white antialiased">
             <NavbarView onOpenLogin={viewModel.openLoginModal} />
             <main>
                 <HeroView />

@@ -1,9 +1,8 @@
 "use client";
 import React from 'react';
 import { FOOTER_STYLES } from '../../Styles/FooterStyles';
-import { FooterLinksSectionProps } from '../../Model/FooterModel';
-
-const FooterLinksSection: React.FC<FooterLinksSectionProps> = ({ title, links }) => {
+import { FooterLinksComponentContract } from '../../Model/FooterModel';
+const FooterLinksSection: React.FC<FooterLinksComponentContract> = ({ title, links }) => {
     const styles = FOOTER_STYLES;
     return (
         <div>

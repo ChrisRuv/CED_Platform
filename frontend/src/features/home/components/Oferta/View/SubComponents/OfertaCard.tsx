@@ -1,15 +1,17 @@
 "use client";
 import React from 'react';
 import { OFERTA_STYLES } from '../../Styles/OfertaStyles';
-import { OfertaCardProps } from '../../Model/OfertaModel';
+import { OfertaComponentContract } from '../../Model/OfertaModel';
 
-const OfertaCard: React.FC<OfertaCardProps> = ({ id, title, desc }) => {
+const OfertaCard: React.FC<OfertaComponentContract> = ({ id, title, desc }) => {
     const styles = OFERTA_STYLES;
     return (
-        <div className={styles.card}>
-            <span className={styles.card_id}>{id}</span>
-            <h4 className={styles.card_title}>{title}</h4>
-            <p className={styles.card_desc}>{desc}</p>
+        <div className={styles.offer_card}>
+            <span className={styles.offer_num}>{id}</span>
+            <div>
+                <h3 className={styles.offer_title}>{title}</h3>
+                <p className={styles.offer_text}>{desc}</p>
+            </div>
         </div>
     );
 };

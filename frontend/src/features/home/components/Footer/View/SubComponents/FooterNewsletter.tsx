@@ -6,8 +6,8 @@ const FooterNewsletter: React.FC = () => {
     return (
         <div className={styles.newsletter_wrap}>
             <h5 className={styles.newsletter_title}>Newsletter</h5>
-            <div className="relative">
-                <input type="email" className={styles.input} placeholder="Email" />
+            <div className={styles.input_group}>
+                <input type="email" className={styles.input} placeholder="Tu correo electrónico" />
                 <button className={styles.btn}>Suscribirme</button>
             </div>
         </div>

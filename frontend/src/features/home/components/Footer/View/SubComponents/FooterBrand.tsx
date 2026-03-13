@@ -7,10 +7,9 @@ const FooterBrand: React.FC = () => {
     const data = FOOTER_DATA;
     return (
         <div className={styles.brand_col}>
-            <div className={styles.logo_wrap}>
-                <div className={styles.logo_icon}>C</div>
-                <span className={styles.logo_name}>{data.brand}</span>
-            </div>
+            <span className={styles.brand_name}>
+                COLEGIO <span className={styles.brand_accent}>CED</span>
+            </span>
             <p className={styles.brand_desc}>{data.tagline}</p>
         </div>
     );

@@ -7,27 +7,22 @@ import PilaresHeader from './SubComponents/PilaresHeader';
 import PilaresImage from './SubComponents/PilaresImage';
 
 const PilaresView: React.FC = () => {
-    const pilaresStyles = PILARES_STYLES;
-    const pilaresData = PILARES_DATA;
+    const styles = PILARES_STYLES;
+    const data = PILARES_DATA;
     return (
-        <section id="modelo" className={pilaresStyles.section}>
-            <div className={pilaresStyles.container}>
-                <div className={pilaresStyles.grid}>
-                    <div className={pilaresStyles.content_wrap}>
-                        <PilaresHeader />
-                        <div className={pilaresStyles.list_wrap}>
-                            {pilaresData.items.map((item, index) => (
-                                <PilarItem 
-                                    key={index}
-                                    index={index}
-                                    title={item.title}
-                                    desc={item.desc}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                    <PilaresImage />
+        <section id="modelo" className={styles.section}>
+            <div className={styles.container}>
+                <PilaresHeader />
+                <div className={styles.list_wrap}>
+                    {data.items.map((item, index) => (
+                        <PilarItem 
+                            key={index}
+                            {...item}
+                            index={index + 1}
+                        />
+                    ))}
                 </div>
+                <PilaresImage />
             </div>
         </section>
     );

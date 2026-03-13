@@ -1,10 +1,10 @@
-export interface NavbarViewProps {
+export interface NavbarComponentContract {
     onOpenLogin: () => void;
 }
-export interface NavbarDesktopLinksProps {
+export interface NavbarDesktopLinksComponentContract {
     onOpenLogin: () => void;
 }
-export interface NavbarMobileMenuProps {
+export interface NavbarMobileMenuComponentContract {
     isOpen: boolean;
     onClose: () => void;
     onOpenLogin: () => void;

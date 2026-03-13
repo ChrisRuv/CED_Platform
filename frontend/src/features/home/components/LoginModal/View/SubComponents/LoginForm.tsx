@@ -1,10 +1,9 @@
 "use client";
 import React from 'react';
-import { LOGIN_MODAL_DATA, LoginFormProps } from '../../Model/LoginModalModel';
+import { LOGIN_MODAL_DATA, LoginFormComponentContract } from '../../Model/LoginModalModel';
 import LoginInput from './LoginInput';
 import LoginSubmitButton from './LoginSubmitButton';
-
-const LoginForm: React.FC<LoginFormProps> = ({ viewModel }) => {
+const LoginForm: React.FC<LoginFormComponentContract> = ({ viewModel }) => {
     const loginData = LOGIN_MODAL_DATA;
     return (
         <form className="space-y-6" onSubmit={viewModel.handleLogin}>
@@ -20,9 +19,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ viewModel }) => {
                 type="password"
                 value={viewModel.password}
                 onChange={viewModel.setPassword}
-                forgotLink={{ 
-                    label: loginData.form.password.forgot, 
-                    href: "#" 
+                forgotLink={{
+                    label: loginData.form.password.forgot,
+                    href: "#"
                 }}
             />
             <LoginSubmitButton label={loginData.form.submit} />

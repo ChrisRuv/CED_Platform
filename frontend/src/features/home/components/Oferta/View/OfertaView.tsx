@@ -3,31 +3,50 @@ import React from 'react';
 import { OFERTA_STYLES } from '../Styles/OfertaStyles';
 import { OFERTA_DATA } from '../Model/OfertaModel';
 import OfertaCard from './SubComponents/OfertaCard';
+import FAQItem from './SubComponents/FAQItem';
+import OfertaCommitment from './SubComponents/OfertaCommitment';
 const OfertaView: React.FC = () => {
-    const ofertaStyles = OFERTA_STYLES;
-    const ofertaData = OFERTA_DATA;
+    const styles = OFERTA_STYLES;
+    const data = OFERTA_DATA;
     return (
-        <section id="oferta" className={ofertaStyles.section}>
-            <div className={ofertaStyles.container}>
-                <div className={ofertaStyles.header}>
-                    <div className={ofertaStyles.header_content}>
-                        <span className={ofertaStyles.label}>{ofertaData.label}</span>
-                        <h3 className={ofertaStyles.title}>{ofertaData.title}</h3>
+        <div id="oferta">
+            <section className={styles.section}>
+                <div className={styles.container}>
+                    <div className={styles.grid}>
+                        <div>
+                            <h2 className={styles.title}>Oferta Educativa</h2>
+                            <div className={styles.offer_list}>
+                                {data.items.map((item) => (
+                                    <OfertaCard 
+                                        key={item.id} 
+                                        id={item.id} 
+                                        title={item.title} 
+                                        desc={item.desc} 
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                        <div>
+                            <h2 className={styles.title}>Preguntas Frecuentes</h2>
+                            <div className={styles.faq_list}>
+                                {data.faq.map((item, index) => (
+                                    <FAQItem 
+                                        key={index} 
+                                        question={item.question} 
+                                        answer={item.answer} 
+                                    />
+                                ))}
+                            </div>
+                        </div>
                     </div>
-                    <p className={ofertaStyles.desc}>{ofertaData.description}</p>
                 </div>
-                <div className={ofertaStyles.grid}>
-                    {ofertaData.levels.map((level, index) => (
-                        <OfertaCard 
-                            key={index}
-                            id={level.id}
-                            title={level.title}
-                            desc={level.desc}
-                        />
-                    ))}
-                </div>
-            </div>
-        </section>
+            </section>
+            <OfertaCommitment 
+                title={data.commitment.title}
+                text={data.commitment.text}
+                sub={data.commitment.sub}
+            />
+        </div>
     );
 };
 export default OfertaView;

@@ -1,9 +1,8 @@
 "use client";
 import React from 'react';
 import { FOOTER_STYLES } from '../../Styles/FooterStyles';
-import { FooterBottomProps } from '../../Model/FooterModel';
-
-const FooterBottom: React.FC<FooterBottomProps> = ({ copyright, socials }) => {
+import { FooterBottomComponentContract } from '../../Model/FooterModel';
+const FooterBottom: React.FC<FooterBottomComponentContract> = ({ copyright, socials }) => {
     const styles = FOOTER_STYLES;
     return (
         <div className={styles.bottom}>
