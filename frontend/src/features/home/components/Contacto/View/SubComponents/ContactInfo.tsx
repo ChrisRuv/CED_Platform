@@ -1,13 +1,16 @@
+
 "use client";
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { CONTACTO_STYLES } from '../../Styles/ContactoStyles';
 import { CONTACTO_DATA } from '../../Model/ContactoModel';
+
 const ICON_MAP: Record<string, any> = {
     Mail: Mail,
     Phone: Phone,
     MapPin: MapPin
 };
+
 const ContactInfo: React.FC = () => {
     const styles = CONTACTO_STYLES;
     const data = CONTACTO_DATA;

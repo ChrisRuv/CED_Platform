@@ -2,6 +2,7 @@ export const NOSOTROS_STYLES = {
     section: "py-24 bg-[#0a0a0a] relative overflow-hidden",
     container: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
     header: "text-center mb-16",
+    label: "text-ced-accent font-black tracking-[0.3em] uppercase text-xs opacity-80",
     title: "text-3xl md:text-5xl font-bold text-white mb-4",
     divider: "w-24 h-1 bg-ced-accent mx-auto",
     subtitle: "mt-4 text-xl text-gray-400",

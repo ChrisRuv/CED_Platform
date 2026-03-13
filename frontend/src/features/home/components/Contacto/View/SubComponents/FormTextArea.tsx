@@ -1,4 +1,6 @@
+
 "use client";
+
 import React from 'react';
 import { CONTACTO_STYLES } from '../../Styles/ContactoStyles';
 import { FormTextAreaComponentContract } from '../../Model/ContactoModel';

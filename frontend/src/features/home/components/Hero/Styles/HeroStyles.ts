@@ -1,6 +1,8 @@
 export const HERO_STYLES = {
     section: "relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center min-h-screen bg-[#0f172a] overflow-hidden",
     bg_overlay: "absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none bg-[url('/images/ced-hero.png')] bg-right-top bg-no-repeat bg-contain",
+    bg_circle1: "absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob",
+    bg_circle2: "absolute top-1/3 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-[128px] opacity-20 animate-blob animation-delay-2000",
     container: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full",
     grid: "grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center",
     content_wrap: "space-y-8 animate-fade-in",

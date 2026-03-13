@@ -1,4 +1,5 @@
 "use client";
+
 import React from 'react';
 import { NOSOTROS_STYLES } from '../../Styles/NosotrosStyles';
 import { NOSOTROS_DATA } from '../../Model/NosotrosModel';
